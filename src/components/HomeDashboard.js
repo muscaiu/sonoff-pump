@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import axios from 'axios';
 
 import NotificationAlert from 'react-notification-alert';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import Header from 'components/Header/Header';
 import Spinner from 'components/Header/Spinner';

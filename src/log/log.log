@@ -1,0 +1,72 @@
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 17:47:13"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 17:47:15"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 17:47:15"}
+{"message":"db mode set to manual","level":"debug","timestamp":"2019-02-10 17:47:15"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 17:49:45"}
+{"level":"debug","message":"initial mode","timestamp":"2019-02-10 17:49:47"}
+{"level":"debug","message":"ignoreExistingModeEntries","timestamp":"2019-02-10 17:49:47"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 17:49:47"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 17:49:47"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 17:51:05"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 17:51:07"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 17:51:07"}
+{"message":"db mode set to manual","level":"debug","timestamp":"2019-02-10 17:51:07"}
+{"value":"manual","createdAt":{"_seconds":1549791474,"_nanoseconds":461000000},"level":"debug","message":"Removed mode: ","timestamp":"2019-02-10 17:51:21"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 17:51:21"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:20:15"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 19:20:18"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 19:20:18"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 19:20:18"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:21:02"}
+{"level":"debug","message":"initial mode","timestamp":"2019-02-10 19:21:04"}
+{"level":"debug","message":"ignoreExistingModeEntries","timestamp":"2019-02-10 19:21:04"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 19:21:04"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 19:21:04"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:21:37"}
+{"level":"debug","message":"initial mode","timestamp":"2019-02-10 19:21:39"}
+{"level":"debug","message":"ignoreExistingModeEntries","timestamp":"2019-02-10 19:21:39"}
+{"level":"debug","message":"initial status","timestamp":"2019-02-10 19:21:39"}
+{"message":false,"level":"debug","timestamp":"2019-02-10 19:21:39"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-10 19:28:32"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:28:32"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:28:39"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:28:39"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 19:28:39"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-10 19:28:59"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:28:59"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:29:01"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:29:01"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 19:29:01"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-10 19:29:21"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:29:21"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:29:24"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:29:24"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 19:29:24"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-10 19:30:00"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-10 19:30:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-10 19:30:00"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-10 19:32:01"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-10 19:32:01"}
+{"message":"initial mode:  manual","level":"debug","timestamp":"2019-02-10 19:32:03"}
+{"message":"ignoreExistingModeEntries: true","level":"debug","timestamp":"2019-02-10 19:32:03"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:32:03"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-10 19:32:03"}
+{"message":"Removed mode: [object Object]","level":"debug","timestamp":"2019-02-10 19:32:27"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-10 19:32:27"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-10 20:00:00"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-10 20:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-10 20:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-10 21:00:00"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-10 21:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-10 21:00:00"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-11 20:00:00"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-11 20:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-11 20:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-11 21:00:00"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-11 21:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-11 21:00:00"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-12 00:07:49"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-12 00:07:49"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-12 00:07:52"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-12 00:07:52"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-12 00:07:52"}

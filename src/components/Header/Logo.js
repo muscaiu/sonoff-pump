@@ -30,7 +30,7 @@ class Logo extends Component {
     const { showNotification } = this.props;
 
     // axios.get('http://192.168.1.11/ay')
-    axios.get('http://localhost:3001/api/status')
+    axios.get('http://cassusa.go.ro:3001/api/status')
       .then(function (response) {
         const { status, temperature, humidity } = response.data;
         showNotification('bc', 'success', `Real status: ${status} ${temperature} ${humidity}`)

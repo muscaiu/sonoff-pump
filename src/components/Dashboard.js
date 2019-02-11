@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import axios from 'axios';
 
 import NotificationAlert from 'react-notification-alert';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import Header from 'components/Header/Header';
 import Spinner from 'components/Header/Spinner';
@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/api/status')
+    axios.get('http://cassusa.go.ro:3001/api/status')
       .then((response) => {
         const { temperature, humidity } = response.data;
         this.setState({
@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
   render() {
     const { temperature, humidity } = this.state;
     const { fbStatus, fbMode, fbLastAction, fbStatusList } = this.props;
-    console.log(this.state)
+
     return isLoaded(fbStatus) ? (
       <Fragment>
         <div className="content">

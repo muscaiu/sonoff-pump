@@ -1,7 +1,6 @@
 const axios = require('axios');
 const admin = require('firebase-admin');
 var CronJob = require('cron').CronJob;
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,14 +8,46 @@ const port = 3001;
 const app = express();
 const router = express.Router();
 
-//stop relay imediatelly
-// relay.writeSync(1); //turn relay off
-axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+const { createLogger, format, transports } = require('winston');
+const fs = require('fs');
+const path = require('path');
+const logDir = 'log';
+// Create the log directory if it does not exist
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir);
+}
+const filename = path.join(logDir, 'log.log');
+// const env = process.env.NODE_ENV || 'development';
+const logger = createLogger({
+  // change level if in dev environment versus production
+  // level: env === 'development' ? 'debug' : 'info',
+  level: 'debug',
+  format: format.combine(
+    format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    }),
+    format.json()
+  ),
+  transports: [
+    new transports.Console({
+      level: 'debug',
+      format: format.combine(
+        format.colorize(),
+        format.printf(
+          info => `${info.timestamp} ${info.level}: ${info.message}`
+        )
+      )
+    }),
+    new transports.File({ filename })
+  ]
+});
 
+
+//stop relay imediatelly
+axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
 
 //temperature command
 //http://192.168.1.11/cm?cmnd=status%2010
-
 
 
 var serviceAccount = require('../config/serviceAccount.json');
@@ -44,22 +75,22 @@ modeRef
         if (change.type === 'added') {
           if (changed.value === 'auto') {
             mode = 'auto';
-            console.log('db mode set to auto');
+            logger.debug('db mode set to auto');
           } else {
             mode = 'manual';
-            console.log('db mode set to manual');
+            logger.debug('db mode set to manual');
           }
         }
         if (change.type === 'modified') {
-          console.log('Modified mode: ', change.doc.data());
+          logger.debug(`Modified mode: ${change.doc.data()}`);
         }
         if (change.type === 'removed') {
-          console.log('Removed mode: ', change.doc.data());
+          logger.debug(`Removed mode: ${change.doc.data()}`);
         }
       } else {
         mode = changed.value;
-        console.log('initial mode', changed.value);
-        console.log('ignoreExistingModeEntries', ignoreExistingModeEntries);
+        logger.debug(`initial mode:  ${changed.value}`);
+        logger.debug(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
       }
     });
 
@@ -81,23 +112,23 @@ statusRef
           if (changed.value) {
             axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
             // relay.writeSync(0); //turn relay on
-            console.log('db event triggered: pompa started');
+            logger.debug('db event triggered: pompa started');
           } else {
             axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
             // relay.writeSync(1); //turn relay off
-            console.log('db event triggered: pompa stopped');
+            logger.debug('db event triggered: pompa stopped');
           }
         }
         if (change.type === 'modified') {
-          console.log('Modified status: ', change.doc.data());
+          logger.debug(`Modified status: ${change.doc.data()}`);
         }
         if (change.type === 'removed') {
-          console.log('Removed status: ', change.doc.data());
+          logger.debug(`Removed status: ${change.doc.data()}`);
         }
       } else {
-        console.log('initial status', changed.value);
+        logger.debug(`initial status: ${changed.value}`);
         const initialStatus = changed.value;
-        console.log(initialStatus)
+        logger.debug(`initial status: ${initialStatus}`)
         if (initialStatus) {
           axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
           //http://sonoff/cm?cmnd=Power%20TOGGLE
@@ -113,19 +144,20 @@ statusRef
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
 
-const customMinute = 21;
-const customHour = 0;
+const customHour = 19;
+const customMinute = 00;
+logger.debug(`mode: ${mode}`)
 const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
   if (mode === 'auto') {
     statusRef.add({
       value: true,
       createdAt: new Date()
     });
-    console.log('pompa started by cron');
+    logger.debug('pompa started by cron');
     axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
     // relay.writeSync(0); //turn relay on
   } else {
-    console.log('cant start auto because is currently in manual mode');
+    logger.warn('cant start auto because is currently in manual mode');
   }
 });
 
@@ -137,9 +169,9 @@ const stopTime = new CronJob(`00 ${customMinute} ${customHour + 1} * * *`, funct
     });
     axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
     // relay.writeSync(1); //turn relay off
-    console.log('pompa stopped by cron');
+    logger.debug('pompa stopped by cron');
   } else {
-    console.log('cant stop auto because is currently in manual mode');
+    logger.warn('cant stop auto because is currently in manual mode');
   }
 });
 
@@ -172,7 +204,7 @@ async function getStatus() {
     })
   }
   catch (err) {
-    console.error(err);
+    logger.err(err);
   }
 }
 
@@ -182,7 +214,7 @@ router.get('/status', function (req, res) {
 });
 
 app.listen(port, function () {
-  console.log(`API running on port ${port}`);
+  logger.debug(`API running on port ${port}`);
 });
 
 app.use('/api', router);
