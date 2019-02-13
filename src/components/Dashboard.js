@@ -10,7 +10,8 @@ import { Row, Col } from 'reactstrap';
 
 import Header from 'components/Header/Header';
 import Spinner from 'components/Header/Spinner';
-import MultiChart from 'components/Charts/MultiChart';
+import StatusChart from 'components/Charts/StatusChart';
+import TempChart from 'components/Charts/TempChart';
 
 class Dashboard extends React.Component {
   static proptypes = {
@@ -53,8 +54,7 @@ class Dashboard extends React.Component {
 
   render() {
     const { temperature, humidity } = this.state;
-    const { fbStatus, fbMode, fbLastAction, fbStatusList } = this.props;
-
+    const { fbStatus, fbMode, fbLastAction, fbStatusList, fbTempList } = this.props;
     return isLoaded(fbStatus) ? (
       <Fragment>
         <div className="content">
@@ -72,7 +72,12 @@ class Dashboard extends React.Component {
           </Row>
           <Row>
             <Col xs="12">
-              <MultiChart fbStatusList={fbStatusList} />
+              <StatusChart fbStatusList={fbStatusList} />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12">
+              <TempChart fbTempList={fbTempList} />
             </Col>
           </Row>
         </div>
@@ -87,11 +92,14 @@ class Dashboard extends React.Component {
 function mapStateToProps(state) {
   const fbStatusList = state.firestore.ordered.status;
   const fbModeList = state.firestore.ordered.mode;
+  const fbTempList = state.firestore.ordered.temp;
+
   return {
     fbStatus: fbStatusList && fbStatusList[0].value,
     fbMode: fbModeList && fbModeList[0].value,
     fbLastAction: fbStatusList && fbStatusList[0].createdAt,
-    fbStatusList
+    fbStatusList,
+    fbTempList
   };
 }
 
@@ -99,6 +107,7 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: 'status', orderBy: ['createdAt', 'desc'] },
-    { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] }
+    { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] },
+    { collection: 'temp', orderBy: ['createdAt', 'desc'] }
   ])
 )(Dashboard);

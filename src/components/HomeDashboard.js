@@ -10,7 +10,7 @@ import { Row, Col } from 'reactstrap';
 
 import Header from 'components/Header/Header';
 import Spinner from 'components/Header/Spinner';
-import MultiChart from 'components/Charts/MultiChart';
+import StatusChart from 'components/Charts/StatusChart';
 
 class HomeDashboard extends React.Component {
   static proptypes = {
@@ -58,7 +58,7 @@ class HomeDashboard extends React.Component {
           </Row>
           <Row>
             <Col xs="12">
-              <MultiChart fbStatusList={fbStatusList} />
+              <StatusChart fbStatusList={fbStatusList} />
             </Col>
           </Row>
         </div>

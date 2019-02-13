@@ -16,9 +16,9 @@ import {
 } from "reactstrap";
 
 // core components
-import { chartExample1 } from "variables/charts";
+import { statusChart } from "variables/charts";
 
-class MultiChart extends Component {
+class StatusChart extends Component {
     static proptypes = {
         fbStatusList: PropTypes.array
     }
@@ -203,7 +203,7 @@ class MultiChart extends Component {
                                     };
                                 }
                             }
-                            options={chartExample1.options}
+                            options={statusChart.options}
                         />
                     </div>
                 </CardBody>
@@ -212,7 +212,7 @@ class MultiChart extends Component {
     }
 }
 
-export default MultiChart;
+export default StatusChart;
 
 
 
