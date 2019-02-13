@@ -57,6 +57,7 @@ var db = admin.firestore();
 db.settings({ timestampsInSnapshots: true });
 
 var statusRef = db.collection('status');
+var tempRef = db.collection('temp');
 var modeRef = db.collection('mode');
 
 let ignoreExistingStateEntries = true;
@@ -81,16 +82,10 @@ modeRef
             logger.debug('db mode set to manual');
           }
         }
-        if (change.type === 'modified') {
-          logger.debug(`Modified mode: ${change.doc.data()}`);
-        }
-        if (change.type === 'removed') {
-          logger.debug(`Removed mode: ${change.doc.data()}`);
-        }
       } else {
         mode = changed.value;
-        logger.debug(`initial mode:  ${changed.value}`);
-        logger.debug(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
+        logger.info(`initial mode:  ${changed.value}`);
+        logger.info(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
       }
     });
 
@@ -119,16 +114,10 @@ statusRef
             logger.debug('db event triggered: pompa stopped');
           }
         }
-        if (change.type === 'modified') {
-          logger.debug(`Modified status: ${change.doc.data()}`);
-        }
-        if (change.type === 'removed') {
-          logger.debug(`Removed status: ${change.doc.data()}`);
-        }
       } else {
-        logger.debug(`initial status: ${changed.value}`);
+        logger.info(`initial status: ${changed.value}`);
         const initialStatus = changed.value;
-        logger.debug(`initial status: ${initialStatus}`)
+        logger.info(`initial status: ${initialStatus}`)
         if (initialStatus) {
           axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
           //http://sonoff/cm?cmnd=Power%20TOGGLE
@@ -146,7 +135,7 @@ statusRef
 
 const customHour = 19;
 const customMinute = 00;
-logger.debug(`mode: ${mode}`)
+logger.info(`mode: ${mode}`)
 const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
   if (mode === 'auto') {
     statusRef.add({
@@ -195,8 +184,8 @@ async function getStatus() {
     const parseStatus = res.data.split('px\'>')
     const status = parseStatus[1].split('</div')[0]
     const parseTemperatureHumidity = res.data.split('{m}')
-    const temperature = parseTemperatureHumidity[1].split('&')[0]
-    const humidity = parseTemperatureHumidity[2].split('%')[0]
+    const temperature = parseInt(parseTemperatureHumidity[1].split('&')[0])
+    const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0])
     return ({
       status,
       temperature,
@@ -213,8 +202,21 @@ router.get('/status', function (req, res) {
     .then(data => res.json(data))
 });
 
+//Hourly Temp Humidity and Status
+const tempCron = new CronJob(`00 * * * * *`, function () {
+  getStatus()
+    .then(data => {
+      tempRef.add({ ...data, createdAt: new Date() });
+    })
+});
+
+tempCron.start()
+logger.info('temp cron started');
+
+
+
 app.listen(port, function () {
-  logger.debug(`API running on port ${port}`);
+  logger.info(`API running on port ${port}`);
 });
 
 app.use('/api', router);

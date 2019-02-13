@@ -70,3 +70,68 @@
 {"message":"initial status: false","level":"debug","timestamp":"2019-02-12 00:07:52"}
 {"message":"initial status: false","level":"debug","timestamp":"2019-02-12 00:07:52"}
 {"message":"db mode set to auto","level":"debug","timestamp":"2019-02-12 00:07:52"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-12 08:29:42"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-12 08:29:42"}
+{"message":"initial mode:  auto","level":"debug","timestamp":"2019-02-12 08:29:46"}
+{"message":"ignoreExistingModeEntries: true","level":"debug","timestamp":"2019-02-12 08:29:46"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-12 08:29:46"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-12 08:29:46"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-12 19:00:22"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-12 19:00:22"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-12 19:00:22"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-12 20:00:22"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-12 20:00:22"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-12 20:00:22"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 09:24:11"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 09:24:11"}
+{"message":"initial mode:  auto","level":"debug","timestamp":"2019-02-13 09:24:14"}
+{"message":"ignoreExistingModeEntries: true","level":"debug","timestamp":"2019-02-13 09:24:14"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 09:24:14"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 09:24:14"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-13 19:29:43"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-13 19:29:43"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-13 19:29:43"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-13 20:29:43"}
+{"message":"Removed status: [object Object]","level":"debug","timestamp":"2019-02-13 20:29:43"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-13 20:29:43"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 20:54:46"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 20:54:46"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:54:49"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:54:49"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-13 20:54:49"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 20:55:47"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 20:55:47"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:55:50"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:55:50"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-13 20:55:50"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 20:59:18"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 20:59:18"}
+{"message":"initial mode:  auto","level":"debug","timestamp":"2019-02-13 20:59:21"}
+{"message":"ignoreExistingModeEntries: true","level":"debug","timestamp":"2019-02-13 20:59:21"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:59:21"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 20:59:21"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 21:03:42"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-13 21:03:42"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 21:03:42"}
+{"message":"initial mode:  auto","level":"debug","timestamp":"2019-02-13 21:03:45"}
+{"message":"ignoreExistingModeEntries: true","level":"debug","timestamp":"2019-02-13 21:03:45"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 21:03:45"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 21:03:45"}
+{"message":"mode: unititialized","level":"debug","timestamp":"2019-02-13 21:06:43"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-13 21:06:43"}
+{"message":"API running on port 3001","level":"debug","timestamp":"2019-02-13 21:06:43"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 21:06:45"}
+{"message":"initial status: false","level":"debug","timestamp":"2019-02-13 21:06:45"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-13 21:06:45"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-13 21:12:45"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-13 21:12:45"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-13 21:12:45"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-13 21:12:48"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-13 21:12:48"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-13 21:12:48"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-13 21:15:02"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-13 21:15:02"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-13 21:15:02"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-13 21:15:05"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-13 21:15:05"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-13 21:15:05"}
