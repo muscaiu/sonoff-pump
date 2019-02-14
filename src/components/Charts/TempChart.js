@@ -23,25 +23,43 @@ class TempChart extends Component {
     fbTempList: [],
   };
 
-  getTemp = () => {
+  getTodayTemp = () => {
     const { fbTempList } = this.props;
-    const hoursArray = [...Array(24).keys()]
+    const hoursArray = [...Array(25).keys()].reverse();
     const trueValues = [];
-    trueValues.length = 24;
-    trueValues.fill(0)
 
-    hoursArray.forEach((hour, index) => {
-      fbTempList && fbTempList.forEach((temp, i) => {
-        if (temp.createdAt && parseInt(moment(temp.createdAt.toDate()).format('HH'), 10) === hour) {
-          trueValues[index] = temp.temperature
+    hoursArray.forEach(hour => {
+      const selectedHour = moment().subtract(hour, 'hour')
+      fbTempList && fbTempList.forEach(data => {
+        if (data.createdAt && moment(data.createdAt.toDate()).isSame(selectedHour, 'hour')) {
+          trueValues.push(data.temperature)
         }
       })
     });
     return trueValues
   }
 
+  getTodayHum = () => {
+    const { fbTempList } = this.props;
+    const hoursArray = [...Array(25).keys()].reverse();
+    const trueValues = [];
+
+    hoursArray.forEach(hour => {
+      const selectedHour = moment().subtract(hour, 'hour')
+      fbTempList && fbTempList.forEach(data => {
+        if (data.createdAt && moment(data.createdAt.toDate()).isSame(selectedHour, 'hour')) {
+          trueValues.push(data.humidity)
+        }
+      })
+    });
+    return trueValues
+  }
+
+  getHour = hours => moment().subtract(hours, 'hour').format('HH')
+
   render() {
-    const hoursLabels = [...Array(24).keys()]
+    const hoursArray = [...Array(24).keys()].reverse();
+    const hoursLabels = hoursArray.map(hour => this.getHour(hour));
 
     return (
       <Card className="card-chart">
@@ -65,25 +83,52 @@ class TempChart extends Component {
 
                   return {
                     labels: hoursLabels,
-                    datasets: [
-                      {
-                        label: "°C",
-                        fill: true,
+                    datasets:
+                      [{
+                        label: "Degrees",
+                        // fill: true,
+                        lineTension: 0.1,
+                        backgroundColor: "#253D62",
+                        borderColor: "#1f8ef1", // The main line color
+                        borderWidth: 2,
+                        borderCapStyle: 'square',
+                        borderDash: [], // try [5, 15] for instance
+                        borderDashOffset: 0.0,
+                        // borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(255,255,255,0)",
+                        pointBackgroundColor: "#1f8ef1",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: "white",
+                        pointHoverBorderColor: "white",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHitRadius: 10,
+                        // notice the gap in the data and the spanGaps: true
+                        data: this.getTodayTemp(),
+                        spanGaps: true,
+                      }, {
+                        label: "Humidity",
+                        lineTension: 0.1,
                         backgroundColor: gradientStroke,
                         borderColor: "#1f8ef1",
                         borderWidth: 2,
+                        borderCapStyle: 'square',
                         borderDash: [],
                         borderDashOffset: 0.0,
-                        pointBackgroundColor: "#1f8ef1",
-                        pointBorderColor: "rgba(255,255,255,0)",
-                        pointHoverBackgroundColor: "#1f8ef1",
-                        pointBorderWidth: 20,
-                        pointHoverRadius: 4,
-                        pointHoverBorderWidth: 15,
+                        pointBorderColor: "black",
+                        pointBackgroundColor: "white",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: "white",
+                        pointHoverBorderColor: "white",
+                        pointHoverBorderWidth: 2,
                         pointRadius: 4,
-                        data: this.getTemp()
+                        // notice the gap in the data and the spanGaps: false
+                        data: this.getTodayHum(),
+                        spanGaps: true,
                       }
-                    ]
+                      ]
                   };
                 }
               }
