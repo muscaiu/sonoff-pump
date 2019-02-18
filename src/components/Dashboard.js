@@ -17,26 +17,27 @@ class Dashboard extends React.Component {
   static proptypes = {
     fbStatus: PropTypes.bool.isRequired,
     fbMode: PropTypes.string.isRequired,
-    fbLastAction: PropTypes.object
+    fbLastAction: PropTypes.object,
   };
 
   state = {
     temperature: 0,
-    humidity: 0
-  }
+    humidity: 0,
+  };
 
   componentDidMount() {
-    axios.get('http://cassusa.go.ro:3001/api/status')
-      .then((response) => {
+    axios
+      .get('http://cassusa.go.ro:3001/api/status')
+      .then(response => {
         const { temperature, humidity } = response.data;
         this.setState({
           temperature,
-          humidity
-        })
+          humidity,
+        });
       })
-      .catch(function (err) {
-        console.log(err)
-      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   showNotification = (place, type, message) => {
@@ -46,10 +47,9 @@ class Dashboard extends React.Component {
       message: <div>{message}</div>,
       type,
       icon: 'tim-icons icon-bell-55',
-      autoDismiss: 5
+      autoDismiss: 5,
     };
     this.refs.notificationAlert.notificationAlert(options);
-
   };
 
   render() {
@@ -84,8 +84,8 @@ class Dashboard extends React.Component {
         <NotificationAlert ref="notificationAlert" />
       </Fragment>
     ) : (
-        <Spinner />
-      );
+      <Spinner />
+    );
   }
 }
 
@@ -99,7 +99,7 @@ function mapStateToProps(state) {
     fbMode: fbModeList && fbModeList[0].value,
     fbLastAction: fbStatusList && fbStatusList[0].createdAt,
     fbStatusList,
-    fbTempList
+    fbTempList,
   };
 }
 
@@ -108,6 +108,6 @@ export default compose(
   firestoreConnect([
     { collection: 'status', orderBy: ['createdAt', 'desc'] },
     { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] },
-    { collection: 'temp', orderBy: ['createdAt', 'desc'] }
-  ])
+    { collection: 'temp', orderBy: ['createdAt', 'desc'] },
+  ]),
 )(Dashboard);

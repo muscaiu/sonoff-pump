@@ -12,10 +12,8 @@ injectGlobal`
     font-family: sans-serif;
     background-color: #222;
   }
-`
+`;
 
-const App = () => (
-  <Header />
-);
+const App = () => <Header />;
 
 export default App;

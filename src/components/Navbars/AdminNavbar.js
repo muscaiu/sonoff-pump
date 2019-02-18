@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 
 // reactstrap components
 import {
@@ -16,31 +16,31 @@ import {
   Nav,
   Container,
   // Modal
-} from "reactstrap";
+} from 'reactstrap';
 
 class AdminNavbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       collapseOpen: false,
-      color: "navbar-transparent"
+      color: 'navbar-transparent',
     };
   }
   componentDidMount() {
-    window.addEventListener("resize", this.updateColor);
+    window.addEventListener('resize', this.updateColor);
   }
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateColor);
+    window.removeEventListener('resize', this.updateColor);
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   updateColor = () => {
     if (window.innerWidth < 993 && this.state.collapseOpen) {
       this.setState({
-        color: "bg-white"
+        color: 'bg-white',
       });
     } else {
       this.setState({
-        color: "navbar-transparent"
+        color: 'navbar-transparent',
       });
     }
   };
@@ -48,25 +48,22 @@ class AdminNavbar extends React.Component {
   toggleCollapse = () => {
     if (this.state.collapseOpen) {
       this.setState({
-        color: "navbar-transparent"
+        color: 'navbar-transparent',
       });
     } else {
       this.setState({
-        color: "bg-white"
+        color: 'bg-white',
       });
     }
     this.setState({
-      collapseOpen: !this.state.collapseOpen
+      collapseOpen: !this.state.collapseOpen,
     });
   };
 
   render() {
     return (
       <Fragment>
-        <Navbar
-          className={classNames("navbar-absolute", this.state.color)}
-          expand
-        >
+        <Navbar className={classNames('navbar-absolute', this.state.color)} expand>
           <Container fluid>
             {/* <div className="navbar-wrapper">
               <div
@@ -107,12 +104,7 @@ class AdminNavbar extends React.Component {
                 {/* <InputGroup className="search-bar">
                 </InputGroup> */}
                 <UncontrolledDropdown nav>
-                  <DropdownToggle
-                    caret
-                    color="default"
-                    data-toggle="dropdown"
-                    nav
-                  >
+                  <DropdownToggle caret color="default" data-toggle="dropdown" nav>
                     <div className="notification d-none d-lg-block d-xl-block" />
                     <i className="tim-icons icon-sound-wave" />
                   </DropdownToggle>
@@ -123,9 +115,7 @@ class AdminNavbar extends React.Component {
                       </DropdownItem>
                     </NavLink>
                     <NavLink tag="li">
-                      <DropdownItem className="nav-item">
-                        You have 5 more tasks
-                      </DropdownItem>
+                      <DropdownItem className="nav-item">You have 5 more tasks</DropdownItem>
                     </NavLink>
                     <NavLink tag="li">
                       <DropdownItem className="nav-item">
@@ -133,14 +123,10 @@ class AdminNavbar extends React.Component {
                       </DropdownItem>
                     </NavLink>
                     <NavLink tag="li">
-                      <DropdownItem className="nav-item">
-                        Another notification
-                      </DropdownItem>
+                      <DropdownItem className="nav-item">Another notification</DropdownItem>
                     </NavLink>
                     <NavLink tag="li">
-                      <DropdownItem className="nav-item">
-                        Another one
-                      </DropdownItem>
+                      <DropdownItem className="nav-item">Another one</DropdownItem>
                     </NavLink>
                   </DropdownMenu>
                 </UncontrolledDropdown>

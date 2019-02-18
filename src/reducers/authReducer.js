@@ -1,39 +1,39 @@
 const initState = {
-  authError: null
+  authError: null,
 };
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case 'LOGIN_ERROR':
-      console.log(('login error'))
+      console.log('login error');
       return {
         ...state,
-        authError: 'Login failed'
-      }
+        authError: 'Login failed',
+      };
     case 'LOGIN_SUCCESS':
-      console.log(('login success'))
+      console.log('login success');
       return {
         ...state,
-        authError: null
-      }
+        authError: null,
+      };
     case 'LOGOUT_SUCCESS':
-      console.log(('logout success'))
+      console.log('logout success');
       return state;
     case 'REGISTER_ERROR':
-      console.log(('register error'))
+      console.log('register error');
       return {
         ...state,
-        authError: action.err.message
-      }
+        authError: action.err.message,
+      };
     case 'REGISTER_SUCCESS':
-      console.log(('register success'))
+      console.log('register success');
       return {
         ...state,
-        authError: null
-      }
+        authError: null,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default authReducer;

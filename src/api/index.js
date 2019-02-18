@@ -24,31 +24,27 @@ const logger = createLogger({
   level: 'debug',
   format: format.combine(
     format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss'
+      format: 'YYYY-MM-DD HH:mm:ss',
     }),
-    format.json()
+    format.json(),
   ),
   transports: [
     new transports.Console({
       level: 'debug',
       format: format.combine(
         format.colorize(),
-        format.printf(
-          info => `${info.timestamp} ${info.level}: ${info.message}`
-        )
-      )
+        format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`),
+      ),
     }),
-    new transports.File({ filename })
-  ]
+    new transports.File({ filename }),
+  ],
 });
 
-
 //stop relay imediatelly
-axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+axios.get('http://192.168.1.11/cm?cmnd=Power%20off');
 
 //temperature command
 //http://192.168.1.11/cm?cmnd=status%2010
-
 
 var serviceAccount = require('../config/serviceAccount.json');
 
@@ -105,11 +101,11 @@ statusRef
       if (!ignoreExistingStateEntries) {
         if (change.type === 'added') {
           if (changed.value) {
-            axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
+            axios.get('http://192.168.1.11/cm?cmnd=Power%20On');
             // relay.writeSync(0); //turn relay on
             logger.debug('db event triggered: pompa started');
           } else {
-            axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+            axios.get('http://192.168.1.11/cm?cmnd=Power%20off');
             // relay.writeSync(1); //turn relay off
             logger.debug('db event triggered: pompa stopped');
           }
@@ -117,13 +113,13 @@ statusRef
       } else {
         logger.info(`initial status: ${changed.value}`);
         const initialStatus = changed.value;
-        logger.info(`initial status: ${initialStatus}`)
+        logger.info(`initial status: ${initialStatus}`);
         if (initialStatus) {
-          axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
+          axios.get('http://192.168.1.11/cm?cmnd=Power%20On');
           //http://sonoff/cm?cmnd=Power%20TOGGLE
           // relay.writeSync(0); //turn relay on
         } else {
-          axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+          axios.get('http://192.168.1.11/cm?cmnd=Power%20off');
           // relay.writeSync(1); //turn relay off
         }
       }
@@ -135,28 +131,28 @@ statusRef
 
 const customHour = 19;
 const customMinute = 00;
-logger.info(`mode: ${mode}`)
-const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
+logger.info(`mode: ${mode}`);
+const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function() {
   if (mode === 'auto') {
     statusRef.add({
       value: true,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
     logger.debug('pompa started by cron');
-    axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
+    axios.get('http://192.168.1.11/cm?cmnd=Power%20On');
     // relay.writeSync(0); //turn relay on
   } else {
     logger.warn('cant start auto because is currently in manual mode');
   }
 });
 
-const stopTime = new CronJob(`00 ${customMinute} ${customHour + 1} * * *`, function () {
+const stopTime = new CronJob(`00 ${customMinute} ${customHour + 1} * * *`, function() {
   if (mode === 'auto') {
     statusRef.add({
       value: false,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
-    axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+    axios.get('http://192.168.1.11/cm?cmnd=Power%20off');
     // relay.writeSync(1); //turn relay off
     logger.debug('pompa stopped by cron');
   } else {
@@ -179,43 +175,38 @@ async function getStatus() {
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
-      }
-    })
-    const parseStatus = res.data.split('px\'>')
-    const status = parseStatus[1].split('</div')[0]
-    const parseTemperatureHumidity = res.data.split('{m}')
-    const temperature = parseInt(parseTemperatureHumidity[1].split('&')[0])
-    const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0])
-    return ({
+      },
+    });
+    const parseStatus = res.data.split("px'>");
+    const status = parseStatus[1].split('</div')[0];
+    const parseTemperatureHumidity = res.data.split('{m}');
+    const temperature = parseInt(parseTemperatureHumidity[1].split('&')[0]);
+    const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0]);
+    return {
       status,
       temperature,
-      humidity
-    })
-  }
-  catch (err) {
+      humidity,
+    };
+  } catch (err) {
     logger.err(err);
   }
 }
 
-router.get('/status', function (req, res) {
-  getStatus()
-    .then(data => res.json(data))
+router.get('/status', function(req, res) {
+  getStatus().then(data => res.json(data));
 });
 
 //Hourly Temp Humidity and Status
-const tempCron = new CronJob(`00 * * * * *`, function () {
-  getStatus()
-    .then(data => {
-      tempRef.add({ ...data, createdAt: new Date() });
-    })
+const tempCron = new CronJob(`00 * * * * *`, function() {
+  getStatus().then(data => {
+    tempRef.add({ ...data, createdAt: new Date() });
+  });
 });
 
-tempCron.start()
+tempCron.start();
 logger.info('temp cron started');
 
-
-
-app.listen(port, function () {
+app.listen(port, function() {
   logger.info(`API running on port ${port}`);
 });
 
@@ -225,6 +216,6 @@ process.on('SIGINT', () => {
   //on ctrl+c
   // relay.writeSync(0); // Turn relay off
   // relay.unexport(); // Unexport relay GPIO to free resources
-  axios.get('hhttp://192.168.1.11/cm?cmnd=Power%20off')
+  axios.get('hhttp://192.168.1.11/cm?cmnd=Power%20off');
   process.exit(); //exit completely
 });

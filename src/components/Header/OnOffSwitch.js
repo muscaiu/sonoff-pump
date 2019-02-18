@@ -16,29 +16,27 @@ class OnOffSwitch extends Component {
   static propTypes = {
     isActive: PropTypes.bool,
     mode: PropTypes.string,
-    showNotification: PropTypes.func
+    showNotification: PropTypes.func,
   };
 
   state = {
     showModal: false,
-    dialogType: ''
-  }
+    dialogType: '',
+  };
 
   handleToggleModal = (toggle, title) => {
-    this.setState(
-      {
-        showModal: toggle,
-        dialogType: title
-      }
-    );
-  }
+    this.setState({
+      showModal: toggle,
+      dialogType: title,
+    });
+  };
 
   handleNotifyDisabled = () => {
     const { showNotification, mode } = this.props;
     if (mode === 'auto') {
-      showNotification('bc', 'warning', 'Disabled in Auto Mode')
+      showNotification('bc', 'warning', 'Disabled in Auto Mode');
     }
-  }
+  };
 
   render() {
     const { isActive, mode, showNotification } = this.props;
@@ -46,8 +44,7 @@ class OnOffSwitch extends Component {
 
     return (
       <Fragment>
-        <SwitchWrapper
-          onClick={this.handleNotifyDisabled}>
+        <SwitchWrapper onClick={this.handleNotifyDisabled}>
           <OnOff color={isActive ? '#BDBDBD' : '#7AC943'}>Off</OnOff>
           <Switch
             disabled={mode === 'auto'}
@@ -70,6 +67,6 @@ class OnOffSwitch extends Component {
       </Fragment>
     );
   }
-};
+}
 
 export default OnOffSwitch;

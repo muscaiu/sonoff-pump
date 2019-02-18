@@ -2,22 +2,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, ButtonGroup, Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
 
 import Logo from 'components/Header/Logo';
 import OnOffSwitch from 'components/Header/OnOffSwitch';
-import pack from '../../../package.json'
+import pack from '../../../package.json';
 import Modal from 'components/Modals/Modal';
 
 const Version = styled.div`
@@ -28,16 +19,16 @@ const Version = styled.div`
 `;
 
 const Distance = styled.div`
-  color: #7AC943;
+  color: #7ac943;
   font-size: 15px;
 `;
 
 const Temperature = styled.div`
-  color: #9A9A9A;
+  color: #9a9a9a;
   font-size: 15px;
 `;
 const Humidity = styled.div`
-  color: #9A9A9A;
+  color: #9a9a9a;
   font-size: 15px;
 `;
 
@@ -46,37 +37,22 @@ class Header extends Component {
     fbStatus: PropTypes.bool.isRequired,
     fbMode: PropTypes.string.isRequired,
     showNotification: PropTypes.func.isRequired,
-    fbLastAction: PropTypes.object
-  }
+    fbLastAction: PropTypes.object,
+  };
 
   state = {
     showModal: false,
-    dialogType: ''
-  }
-
-  // componentDidMount() {
-  //   this.interval = setInterval(() => {
-  //     axios.get('http://localhost:3001/api/status')
-  //       .then(function (response) {
-  //         console.log('response:', response.data)
-  //       })
-  //       .catch(function (err) {
-  //         console.log(err)
-  //       })
-  //   }, 5000);
-  // }
+    dialogType: '',
+  };
 
   handleToggleModal = (toggle, title) => {
-    this.setState(
-      {
-        showModal: toggle,
-        dialogType: title
-      }
-    );
-  }
+    this.setState({
+      showModal: toggle,
+      dialogType: title,
+    });
+  };
 
   getDistance = () => this.props.fbLastAction && moment(this.props.fbLastAction.toDate()).from();
-
 
   render() {
     const { fbStatus, fbMode, showNotification, temperature, humidity } = this.props;
@@ -90,42 +66,34 @@ class Header extends Component {
               <Col className="text-left" sm="6">
                 <h5 className="card-category">Auto interval 19:00 - 20:00</h5>
                 <CardTitle tag="h3">
-                  <i className="tim-icons icon-bell-55 text-info" />{" "}
-                  {fbStatus ? 'ON' : 'OFF'}
+                  <i className="tim-icons icon-bell-55 text-info" /> {fbStatus ? 'ON' : 'OFF'}
                 </CardTitle>
               </Col>
               <Col sm="6">
-                <ButtonGroup
-                  className="btn-group-toggle float-right"
-                  data-toggle="buttons"
-                >
+                <ButtonGroup className="btn-group-toggle float-right" data-toggle="buttons">
                   <Button
                     color="info"
                     id="1"
                     size="sm"
                     tag="label"
-                    className={classNames("btn-simple", {
-                      active: fbMode === "auto"
+                    className={classNames('btn-simple', {
+                      active: fbMode === 'auto',
                     })}
                     onClick={() => fbMode === 'manual' && this.handleToggleModal(true, 'mode')}
                   >
-                    <span className="d-sm-block d-md-block d-lg-block d-xl-block">
-                      Auto
-                  </span>
+                    <span className="d-sm-block d-md-block d-lg-block d-xl-block">Auto</span>
                   </Button>
                   <Button
                     tag="label"
-                    className={classNames("btn-simple", {
-                      active: fbMode === "manual"
+                    className={classNames('btn-simple', {
+                      active: fbMode === 'manual',
                     })}
                     color="info"
                     id="0"
                     size="sm"
                     onClick={() => fbMode === 'auto' && this.handleToggleModal(true, 'mode')}
                   >
-                    <span className="d-sm-block d-md-block d-lg-block d-xl-block">
-                      Manual
-                  </span>
+                    <span className="d-sm-block d-md-block d-lg-block d-xl-block">Manual</span>
                   </Button>
                 </ButtonGroup>
               </Col>
@@ -135,25 +103,16 @@ class Header extends Component {
             <div className="places-buttons">
               <Row>
                 <Col className="ml-auto mr-auto text-center" md="6">
-                  <Logo
-                    isActive={fbStatus}
-                    showNotification={showNotification}
-                  />
+                  <Logo isActive={fbStatus} showNotification={showNotification} />
                   <OnOffSwitch
                     isActive={fbStatus}
                     onStatusClick={this.hanldeToggleStats}
                     mode={fbMode}
                     showNotification={showNotification}
                   />
-                  <Distance>
-                    last action: {this.getDistance()}
-                  </Distance>
-                  <Temperature>
-                    temperature: {temperature} °C
-                  </Temperature>
-                  <Humidity>
-                    humidity: {humidity} %
-                  </Humidity>
+                  <Distance>last action: {this.getDistance()}</Distance>
+                  <Temperature>temperature: {temperature} °C</Temperature>
+                  <Humidity>humidity: {humidity} %</Humidity>
                   <Version>version: {pack.version}</Version>
                 </Col>
               </Row>
@@ -169,7 +128,7 @@ class Header extends Component {
           mode={fbMode}
         />
       </Fragment>
-    )
+    );
   }
 }
 

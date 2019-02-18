@@ -16,7 +16,7 @@ class HomeDashboard extends React.Component {
   static proptypes = {
     fbStatus: PropTypes.bool.isRequired,
     fbMode: PropTypes.string.isRequired,
-    fbLastAction: PropTypes.object
+    fbLastAction: PropTypes.object,
   };
 
   showNotification = (place, type, message) => {
@@ -26,19 +26,16 @@ class HomeDashboard extends React.Component {
       message: <div>{message}</div>,
       type,
       icon: 'tim-icons icon-bell-55',
-      autoDismiss: 5
+      autoDismiss: 5,
     };
     this.refs.notificationAlert.notificationAlert(options);
-
   };
 
-
   handleTemp = () => {
-    axios.get('http://192.168.1.11/ay')
-      .then((response) => {
-        console.log(response)
-      })
-  }
+    axios.get('http://192.168.1.11/ay').then(response => {
+      console.log(response);
+    });
+  };
 
   render() {
     const { fbStatus, fbMode, fbLastAction, fbStatusList } = this.props;
@@ -65,8 +62,8 @@ class HomeDashboard extends React.Component {
         <NotificationAlert ref="notificationAlert" />
       </Fragment>
     ) : (
-        <Spinner />
-      );
+      <Spinner />
+    );
   }
 }
 
@@ -77,7 +74,7 @@ function mapStateToProps(state) {
     fbStatus: fbStatusList && fbStatusList[0].value,
     fbMode: fbModeList && fbModeList[0].value,
     fbLastAction: fbStatusList && fbStatusList[0].createdAt,
-    fbStatusList
+    fbStatusList,
   };
 }
 
@@ -85,6 +82,6 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: 'status', orderBy: ['createdAt', 'desc'] },
-    { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] }
-  ])
+    { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] },
+  ]),
 )(HomeDashboard);

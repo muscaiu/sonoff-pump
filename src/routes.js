@@ -1,22 +1,22 @@
-import Dashboard from "components/Dashboard";
-import HomeDashboard from "components/HomeDashboard";
+import Dashboard from 'components/Dashboard';
+import HomeDashboard from 'components/HomeDashboard';
 // import Notifications from "views/Notifications";
 // import UserProfile from "views/UserProfile.jsx";
 
 var routes = [
   {
-    path: "/",
-    name: "Dashboard",
-    icon: "tim-icons icon-chart-pie-36",
+    path: '/',
+    name: 'Dashboard',
+    icon: 'tim-icons icon-chart-pie-36',
     component: Dashboard,
-    layout: "/"
+    layout: '/',
   },
   {
-    path: "/home",
-    name: "HomeDashboard",
-    icon: "tim-icons icon-bell-55",
+    path: '/home',
+    name: 'HomeDashboard',
+    icon: 'tim-icons icon-bell-55',
     component: HomeDashboard,
-    layout: "/home"
+    layout: '/home',
   },
   // {
   //   path: "/user-profile",

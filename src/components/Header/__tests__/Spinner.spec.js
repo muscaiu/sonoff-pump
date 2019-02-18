@@ -6,19 +6,17 @@ import createStore from 'redux-mock-store';
 import Spinner from '../Spinner';
 
 describe('Spinner', () => {
-    const wrapper = shallow(<Spinner />);
+  const wrapper = shallow(<Spinner />);
 
-    it('should match snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-    })
+  it('should match snapshot', () => {
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
-    it('should contain a div', () => {
-        // const state = {};
-        // const mockStore = createStore();
-        // const store = mockStore(state);
-        // const wrapper = shallow(<Spinner />, { context: { store } });
-        expect(wrapper.find('.preloader')).toHaveLength(1);
-    });
-})
-
-
+  it('should contain a div', () => {
+    // const state = {};
+    // const mockStore = createStore();
+    // const store = mockStore(state);
+    // const wrapper = shallow(<Spinner />, { context: { store } });
+    expect(wrapper.find('.preloader')).toHaveLength(1);
+  });
+});
