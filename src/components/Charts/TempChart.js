@@ -25,7 +25,7 @@ class TempChart extends Component {
 
   getTodayTemp = () => {
     const { fbTempList } = this.props;
-    const hoursArray = [...Array(25).keys()].reverse();
+    const hoursArray = [...Array(26).keys()].reverse();
     const trueValues = [];
 
     hoursArray.forEach(hour => {
@@ -41,7 +41,7 @@ class TempChart extends Component {
 
   getTodayHum = () => {
     const { fbTempList } = this.props;
-    const hoursArray = [...Array(25).keys()].reverse();
+    const hoursArray = [...Array(26).keys()].reverse();
     const trueValues = [];
 
     hoursArray.forEach(hour => {

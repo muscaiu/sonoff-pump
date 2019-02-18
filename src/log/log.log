@@ -198,3 +198,10 @@
 {"message":"initial mode:  auto","level":"info","timestamp":"2019-02-18 23:37:11"}
 {"message":"ignoreExistingModeEntries: true","level":"info","timestamp":"2019-02-18 23:37:11"}
 {"message":"initial status: false","level":"info","timestamp":"2019-02-18 23:37:11"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-18 23:40:37"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-18 23:40:37"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-18 23:40:37"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-18 23:40:37"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-18 23:40:39"}
+{"message":"ignoreExistingModeEntries: true","level":"info","timestamp":"2019-02-18 23:40:39"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-18 23:40:39"}
