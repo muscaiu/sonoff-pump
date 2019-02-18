@@ -45,7 +45,7 @@ class OnOffSwitch extends Component {
     return (
       <Fragment>
         <SwitchWrapper onClick={this.handleNotifyDisabled}>
-          <OnOff color={isActive ? '#BDBDBD' : '#7AC943'}>Off</OnOff>
+          <OnOff color={isActive ? '#BDBDBD' : '#00d6b4'}>Off</OnOff>
           <Switch
             disabled={mode === 'auto'}
             checked={isActive}

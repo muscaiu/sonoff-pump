@@ -19,15 +19,6 @@ const Version = styled.div`
 `;
 
 const Distance = styled.div`
-  color: #7ac943;
-  font-size: 15px;
-`;
-
-const Temperature = styled.div`
-  color: #9a9a9a;
-  font-size: 15px;
-`;
-const Humidity = styled.div`
   color: #9a9a9a;
   font-size: 15px;
 `;
@@ -111,8 +102,6 @@ class Header extends Component {
                     showNotification={showNotification}
                   />
                   <Distance>last action: {this.getDistance()}</Distance>
-                  <Temperature>temperature: {temperature} °C</Temperature>
-                  <Humidity>humidity: {humidity} %</Humidity>
                   <Version>version: {pack.version}</Version>
                 </Col>
               </Row>
