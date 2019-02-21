@@ -49,7 +49,7 @@ modeRef
       } else {
         mode = changed.value;
         logger.info(`initial mode:  ${changed.value}`);
-        logger.info(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
+        // logger.info(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
       }
     });
 
@@ -93,8 +93,6 @@ statusRef
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
 const customHour = 19;
 const customMinute = 00;
-
-logger.info(`mode: ${mode}`)
 
 const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
   if (mode === 'auto') {
