@@ -92,7 +92,7 @@ statusRef
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
 const customHour = 19;
-const customMinute = 00;
+const customMinute = 0;
 
 const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
   if (mode === 'auto') {
@@ -134,6 +134,11 @@ router.get('/status', function (req, res) {
     .then(data => res.json(data))
 });
 
+router.get('/log', function (req, res) {
+  var fs = require('fs');
+  var logFile = fs.readFileSync('./log/log.json').toString().split("\n");
+  res.send(logFile)
+});
 
 
 app.listen(port, function () {

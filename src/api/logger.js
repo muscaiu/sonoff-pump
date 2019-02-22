@@ -2,7 +2,7 @@ const { createLogger, format, transports } = require('winston');
 const fs = require('fs');
 const path = require('path');
 const logDir = 'log';
-const filename = path.join(logDir, 'log.log');
+const filename = path.join(logDir, 'log.json');
 
 // Create the log directory if it does not exist
 if (!fs.existsSync(logDir)) {
@@ -22,6 +22,8 @@ const logger = createLogger({
   transports: [
     new transports.Console({
       level: 'debug',
+      prettyPrint: true,
+      handleExceptions: true,
       format: format.combine(
         format.colorize(),
         format.printf(

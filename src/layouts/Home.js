@@ -47,14 +47,14 @@ class Home extends React.Component {
   }
 
   getRoutes = routes => {
-    return routes.map((prop, key) => {
-      // if (prop.layout === "/admin") {
-      if (prop.layout === '/') {
+    return routes.map((route, key) => {
+      // if (route.layout === "/admin") {
+      if (route.layout === '/') {
         return (
           <Route
-            // path={prop.layout + prop.path}
-            path={prop.path}
-            component={prop.component}
+            // path={route.layout + route.path}
+            path={route.path}
+            component={route.component}
             key={key}
           />
         );

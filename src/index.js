@@ -18,6 +18,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import AdminLayout from './layouts/Admin';
 import HomeLayout from './layouts/Home';
+import Log from './components/Log';
 
 const store = createStore(
   rootReducer,
@@ -37,6 +38,7 @@ ReactDOM.render(
         {/* <Redirect from="/" to="/dashboard" /> */}
         <Route exact path="/" render={props => <AdminLayout {...props} />} />
         <Route path="/home" render={props => <HomeLayout {...props} />} />
+        <Route path="/log" render={props => <Log {...props} />} />
       </Switch>
     </Router>
   </Provider>,
