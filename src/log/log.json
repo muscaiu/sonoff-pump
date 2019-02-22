@@ -45,3 +45,8 @@
 {"message":"API running on port 3001","level":"info","timestamp":"2019-02-22 21:43:25"}
 {"message":"initial status: false","level":"info","timestamp":"2019-02-22 21:43:27"}
 {"message":"db mode set to auto","level":"debug","timestamp":"2019-02-22 21:43:27"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-22 22:13:03"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-22 22:13:03"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-22 22:13:03"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-22 22:13:06"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-22 22:13:06"}

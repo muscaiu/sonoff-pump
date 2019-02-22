@@ -46,7 +46,7 @@ class Header extends Component {
   getDistance = () => this.props.fbLastAction && moment(this.props.fbLastAction.toDate()).from();
 
   render() {
-    const { fbStatus, fbMode, showNotification, temperature, humidity } = this.props;
+    const { fbStatus, fbMode, showNotification } = this.props;
     const { showModal, dialogType } = this.state;
 
     return (
