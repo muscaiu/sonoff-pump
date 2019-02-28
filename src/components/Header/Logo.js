@@ -33,8 +33,8 @@ class Logo extends Component {
     axios
       .get('http://cassusa.go.ro:3001/api/status')
       .then(function(response) {
-        const { status, temperature, humidity } = response.data;
-        showNotification('bc', 'success', `Real status: ${status} ${temperature} ${humidity}`);
+        const { status, temperature } = response.data;
+        showNotification('bc', 'success', `Real status: ${status} ${temperature}`);
       })
       .catch(function(err) {
         showNotification('bc', 'danger', `${err}`);

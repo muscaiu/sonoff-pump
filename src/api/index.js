@@ -7,7 +7,7 @@ const port = 3001;
 const app = express();
 const router = express.Router();
 
-const getStatus = require('./getStatus');
+const getLivingStatus = require('./getLivingStatus');
 const logger = require('./logger');
 const {
   statusRef,
@@ -16,16 +16,19 @@ const {
 
 //stop sonoff imediatelly
 axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
+axios.get('http://192.168.1.12/cm?cmnd=Power%20off')
 
 
 
 const tempCron = require('./cron/tempCron');
 tempCron.start()
+const livingTempCron = require('./cron/livingTempCron');
+livingTempCron.start()
 logger.info('temp cron started');
+logger.info('livingTempCron cron started');
 
 
 let ignoreExistingStateEntries = true;
-let ignoreExistingModeEntries = true;
 let mode = 'unititialized';
 
 modeRef
@@ -49,7 +52,6 @@ modeRef
       } else {
         mode = changed.value;
         logger.info(`initial mode:  ${changed.value}`);
-        // logger.info(`ignoreExistingModeEntries: ${ignoreExistingModeEntries}`);
       }
     });
 
@@ -130,7 +132,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 router.get('/status', function (req, res) {
-  getStatus()
+  getLivingStatus()
     .then(data => res.json(data))
 });
 

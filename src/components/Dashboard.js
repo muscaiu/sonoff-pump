@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'redux';
-import axios from 'axios';
 
 import NotificationAlert from 'react-notification-alert';
 import { Row, Col } from 'reactstrap';
@@ -12,6 +11,7 @@ import Header from 'components/Header/Header';
 import Spinner from 'components/Header/Spinner';
 import StatusChart from 'components/Charts/StatusChart';
 import TempChart from 'components/Charts/TempChart';
+import LivingTempChart from 'components/Charts/LivingTempChart';
 
 class Dashboard extends React.Component {
   static proptypes = {
@@ -19,25 +19,6 @@ class Dashboard extends React.Component {
     fbMode: PropTypes.string.isRequired,
     fbLastAction: PropTypes.object
   };
-
-  state = {
-    temperature: 0,
-    humidity: 0
-  }
-
-  componentDidMount() {
-    axios.get('http://cassusa.go.ro:3001/api/status')
-      .then((response) => {
-        const { temperature, humidity } = response.data;
-        this.setState({
-          temperature,
-          humidity
-        })
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
-  }
 
   showNotification = (place, type, message) => {
     // primary, success, dandger, warning, info
@@ -53,8 +34,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { temperature, humidity } = this.state;
-    const { fbStatus, fbMode, fbLastAction, fbStatusList, fbTempList } = this.props;
+    const { fbStatus, fbMode, fbLastAction, fbStatusList, fbTempList, fbLivingTempList } = this.props;
     return isLoaded(fbStatus) ? (
       <Fragment>
         <div className="content">
@@ -65,8 +45,6 @@ class Dashboard extends React.Component {
                 fbMode={fbMode}
                 fbLastAction={fbLastAction}
                 showNotification={this.showNotification}
-                temperature={temperature}
-                humidity={humidity}
               />
             </Col>
           </Row>
@@ -78,6 +56,11 @@ class Dashboard extends React.Component {
           <Row>
             <Col xs="12">
               <TempChart fbTempList={fbTempList} />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12">
+              <LivingTempChart fbLivingTempList={fbLivingTempList} />
             </Col>
           </Row>
         </div>
@@ -93,13 +76,15 @@ function mapStateToProps(state) {
   const fbStatusList = state.firestore.ordered.status;
   const fbModeList = state.firestore.ordered.mode;
   const fbTempList = state.firestore.ordered.temp;
+  const fbLivingTempList = state.firestore.ordered.livingTemp;
 
   return {
     fbStatus: fbStatusList && fbStatusList[0].value,
     fbMode: fbModeList && fbModeList[0].value,
     fbLastAction: fbStatusList && fbStatusList[0].createdAt,
     fbStatusList,
-    fbTempList
+    fbTempList,
+    fbLivingTempList
   };
 }
 
@@ -108,6 +93,7 @@ export default compose(
   firestoreConnect([
     { collection: 'status', limit: 100, orderBy: ['createdAt', 'desc'] },
     { collection: 'mode', limit: 1, orderBy: ['createdAt', 'desc'] },
-    { collection: 'temp', limit: 100, orderBy: ['createdAt', 'desc'] }
+    { collection: 'temp', limit: 100, orderBy: ['createdAt', 'desc'] },
+    { collection: 'livingTemp', limit: 100, orderBy: ['createdAt', 'desc'] }
   ])
 )(Dashboard);

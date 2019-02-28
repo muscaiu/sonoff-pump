@@ -50,3 +50,81 @@
 {"message":"API running on port 3001","level":"info","timestamp":"2019-02-22 22:13:03"}
 {"message":"initial mode:  auto","level":"info","timestamp":"2019-02-22 22:13:06"}
 {"message":"initial status: false","level":"info","timestamp":"2019-02-22 22:13:06"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-22 22:55:31"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-22 22:55:31"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-22 22:55:31"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-22 22:55:34"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-22 22:55:34"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-23 19:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-23 19:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-23 20:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-23 20:00:00"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-24 19:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-24 19:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-24 20:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-24 20:00:00"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-25 19:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-25 19:00:02"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-25 20:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-25 20:00:00"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-26 19:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-26 19:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-26 20:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-26 20:00:00"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-26 22:12:54"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-26 22:12:54"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-26 22:12:54"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-26 22:12:57"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-26 22:12:57"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-26 23:16:14"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-26 23:16:14"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-26 23:16:15"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-26 23:16:18"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-26 23:16:18"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-27 00:12:22"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-27 00:12:22"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-27 00:12:22"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-27 00:12:25"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-27 00:12:25"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-27 08:17:26"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-27 08:17:26"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-27 08:17:26"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-27 08:17:29"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-27 08:17:29"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-02-27 19:00:00"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-02-27 19:00:00"}
+{"message":"pompa stopped by cron","level":"debug","timestamp":"2019-02-27 20:00:00"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-02-27 20:00:00"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:14:53"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:14:54"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:14:54"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:14:57"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:14:57"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:14:57"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:15:00"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:15:01"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:15:01"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:15:04"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:15:04"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:15:04"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:15:08"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:15:08"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:15:08"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:23:29"}
+{"message":"livingTempCron cron started","level":"info","timestamp":"2019-02-28 08:23:29"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:23:29"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:23:29"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-28 08:23:32"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-02-28 08:23:32"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:34:25"}
+{"message":"livingTempCron cron started","level":"info","timestamp":"2019-02-28 08:34:25"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:34:25"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:34:25"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-28 08:34:27"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-28 08:34:27"}
+{"message":"temp cron started","level":"info","timestamp":"2019-02-28 08:49:09"}
+{"message":"livingTempCron cron started","level":"info","timestamp":"2019-02-28 08:49:09"}
+{"message":"mode: unititialized","level":"info","timestamp":"2019-02-28 08:49:09"}
+{"message":"API running on port 3001","level":"info","timestamp":"2019-02-28 08:49:09"}
+{"message":"initial mode:  auto","level":"info","timestamp":"2019-02-28 08:49:11"}
+{"message":"initial status: false","level":"info","timestamp":"2019-02-28 08:49:11"}
