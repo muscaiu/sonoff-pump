@@ -13,7 +13,9 @@ const ManualButton = ({ fbMode, onToggleModal }) => (
         id="0"
         size="sm"
     >
-        <span className="d-sm-block d-md-block d-lg-block d-xl-block">Manual</span>
+        <span className="d-sm-block d-md-block d-lg-block d-xl-block">
+            Manual
+        </span>
     </Button>
 )
 

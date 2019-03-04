@@ -7,11 +7,11 @@ import { ButtonGroup, Card, CardHeader, CardBody, CardTitle, Row, Col } from 're
 
 import withModal from 'hocs/withModal';
 
+import pack from '../../../package.json';
 import Logo from 'components/Header/Logo';
 import OnOffSwitch from 'components/Header/OnOffSwitch';
-import pack from '../../../package.json';
 import Modal from 'components/Modals/Modal';
-import {AutoButton, ManualButton} from 'components/Buttons';
+import { AutoButton, ManualButton } from 'components/Buttons';
 
 const Version = styled.div`
   color: darkgrey;
