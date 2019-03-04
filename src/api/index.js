@@ -8,6 +8,7 @@ const app = express();
 const router = express.Router();
 
 const getLivingStatus = require('./getLivingStatus');
+const getStatus = require('./getStatus');
 const logger = require('./logger');
 const {
   statusRef,
@@ -131,8 +132,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-router.get('/status', function (req, res) {
+router.get('/statusliving', function (req, res) {
   getLivingStatus()
+    .then(data => res.json(data))
+});
+
+router.get('/statuspompa', function (req, res) {
+  getStatus()
     .then(data => res.json(data))
 });
 

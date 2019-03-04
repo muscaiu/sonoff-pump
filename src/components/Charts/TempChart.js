@@ -23,6 +23,23 @@ class TempChart extends Component {
     fbTempList: [],
   };
 
+  state = {
+    temperature: ''
+  }
+
+  // componentDidMount = async () => {
+  //   const response = await fetch('http://cassusa.go.ro:3001/api/status')
+  //   const json = await response.json();
+  //   console.log(json)
+  // }
+
+  componentDidMount() {
+    fetch('http://cassusa.go.ro:3001/api/statusliving')
+      .then(response => response.json())
+      .then(data => this.setState({ temperature: data }))
+  }
+
+
   getTodayTemp = () => {
     const { fbTempList } = this.props;
     const hoursArray = [...Array(26).keys()].reverse();

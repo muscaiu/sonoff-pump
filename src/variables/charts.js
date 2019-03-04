@@ -74,8 +74,8 @@ let chart_temp_options = {
           zeroLineColor: "transparent"
         },
         ticks: {
-          suggestedMin: 0,
-          suggestedMax: 10,
+          suggestedMin: 18,
+          suggestedMax: 20,
           padding: 20,
           fontColor: "#9a9a9a"
         }

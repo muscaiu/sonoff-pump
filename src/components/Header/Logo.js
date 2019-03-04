@@ -26,22 +26,9 @@ class Logo extends Component {
     showNotification: PropTypes.func,
   };
 
-  handleGetStatus = () => {
-    const { showNotification } = this.props;
-    axios
-      .get('http://cassusa.go.ro:3001/api/status')
-      .then(function(response) {
-        const { status, temperature } = response.data;
-        showNotification('bc', 'success', `Real status: ${status} ${temperature}`);
-      })
-      .catch(function(err) {
-        showNotification('bc', 'danger', `${err}`);
-      });
-  };
-
   render() {
     const { isActive } = this.props;
-    return <LogoImg onClick={this.handleGetStatus} isActive={isActive} src={logo} />;
+    return <LogoImg isActive={isActive} src={logo} />;
   }
 }
 
