@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
 
   static proptypes = {
     fbStatus: PropTypes.bool.isRequired,
-    fbMode: PropTypes.string.isRequired,
+    fbMode: PropTypes.string,
     fbLastAction: PropTypes.object,
     fbStatusList: PropTypes.array,
     fbTempList: PropTypes.array,
