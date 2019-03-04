@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
 import moment from 'moment';
-import axios from 'axios';
+
 import {
   Card,
   CardHeader,
@@ -11,8 +11,8 @@ import {
   Col,
 } from "reactstrap";
 
-// core components
 import { chart_temp_options } from "variables/charts";
+import withFetching from 'hocs/withFetching';
 
 class TempChart extends Component {
   static proptypes = {
@@ -22,17 +22,6 @@ class TempChart extends Component {
   static defaultProps = {
     fbTempList: [],
   };
-
-  state = {
-    temperature: ''
-  }
-
-  componentDidMount() {
-    axios.get('http://cassusa.go.ro:3001/api/statuspompa')
-    // fetch('http://cassusa.go.ro:3001/api/statuspompa')
-      // .then(response => response.json())
-      .then(data => this.setState({ temperature: data.temperature }))
-  }
 
   getTodayTemp = () => {
     const { fbTempList } = this.props;
@@ -72,6 +61,8 @@ class TempChart extends Component {
     const hoursArray = [...Array(24).keys()].reverse();
     const hoursLabels = hoursArray.map(hour => this.getHour(hour));
     const { temperature } = this.state;
+
+    console.log(this.props)
     return (
       <Card className="card-chart">
         <CardHeader>
@@ -147,4 +138,4 @@ class TempChart extends Component {
   }
 }
 
-export default TempChart;
+export default withFetching('http://cassusa.go.ro:3001/api/statuspompa')(TempChart);
