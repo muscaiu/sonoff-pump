@@ -1,14 +1,11 @@
 import React from 'react';
-import moment from 'moment';
 
-export default function createHeader(WrappedComponent) {
-    class Header extends React.Component {
+export default function withModal(WrappedComponent) {
+    class Dialog extends React.Component {
         state = {
             showModal: false,
             dialogType: '',
         };
-
-        getLastAction = () => this.props.fbLastAction && moment(this.props.fbLastAction.toDate()).from();
 
         handleToggleModal = (toggle, title) => {
             this.setState({
@@ -17,14 +14,20 @@ export default function createHeader(WrappedComponent) {
             });
         };
 
+        handleNotifyDisabled = () => {
+            const { showNotification, mode } = this.props;
+            if (mode === 'auto') {
+                showNotification('bc', 'warning', 'Disabled in Auto Mode');
+            }
+        };
+
         render() {
             const { showModal, dialogType } = this.state;
-
             return (
                 <WrappedComponent
                     {...this.props}
-                    getLastAction={this.getLastAction}
                     onToggleModal={this.handleToggleModal}
+                    onNotifyDisabled={this.handleNotifyDisabled}
                     showModal={showModal}
                     dialogType={dialogType}
                 />
@@ -32,5 +35,5 @@ export default function createHeader(WrappedComponent) {
         }
     }
 
-    return (Header);
+    return (Dialog);
 }

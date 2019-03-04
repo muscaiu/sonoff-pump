@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import classNames from 'classnames';
+import moment from 'moment';
 
-import { Button, ButtonGroup, Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
+import { ButtonGroup, Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
 
-import createHeader from 'hocs/createHeader';
+import withModal from 'hocs/withModal';
 
 import Logo from 'components/Header/Logo';
 import OnOffSwitch from 'components/Header/OnOffSwitch';
 import pack from '../../../package.json';
 import Modal from 'components/Modals/Modal';
+import {AutoButton, ManualButton} from 'components/Buttons';
 
 const Version = styled.div`
   color: darkgrey;
@@ -24,14 +25,16 @@ const Distance = styled.div`
   font-size: 15px;
 `;
 
+const getLastAction = (fbLastAction) => fbLastAction && moment(fbLastAction.toDate()).from();
+
 const Header = ({
   fbStatus,
   fbMode,
   showNotification,
-  getLastAction,
   onToggleModal,
   showModal,
   dialogType,
+  fbLastAction
 }) => (
     <React.Fragment>
       <Card className="card-chart">
@@ -45,30 +48,8 @@ const Header = ({
             </Col>
             <Col sm="6">
               <ButtonGroup className="btn-group-toggle float-right" data-toggle="buttons">
-                <Button
-                  color="info"
-                  id="1"
-                  size="sm"
-                  tag="label"
-                  className={classNames('btn-simple', {
-                    active: fbMode === 'auto',
-                  })}
-                  onClick={() => fbMode === 'manual' && onToggleModal(true, 'mode')}
-                >
-                  <span className="d-sm-block d-md-block d-lg-block d-xl-block">Auto</span>
-                </Button>
-                <Button
-                  tag="label"
-                  className={classNames('btn-simple', {
-                    active: fbMode === 'manual',
-                  })}
-                  color="info"
-                  id="0"
-                  size="sm"
-                  onClick={() => fbMode === 'auto' && onToggleModal(true, 'mode')}
-                >
-                  <span className="d-sm-block d-md-block d-lg-block d-xl-block">Manual</span>
-                </Button>
+                <AutoButton fbMode={fbMode} onToggleModal={onToggleModal} />
+                <ManualButton fbMode={fbMode} onToggleModal={onToggleModal} />
               </ButtonGroup>
             </Col>
           </Row>
@@ -84,7 +65,7 @@ const Header = ({
                   mode={fbMode}
                   showNotification={showNotification}
                 />
-                <Distance>last action: {getLastAction()}</Distance>
+                <Distance>last action: {getLastAction(fbLastAction)}</Distance>
                 <Version>version: {pack.version}</Version>
               </Col>
             </Row>
@@ -102,7 +83,7 @@ const Header = ({
     </React.Fragment>
   )
 
-export default createHeader(Header);
+export default withModal(Header);
 
 Header.propTypes = {
   fbStatus: PropTypes.bool.isRequired,
