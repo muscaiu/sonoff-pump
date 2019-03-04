@@ -50,7 +50,7 @@ class Header extends Component {
     const { showModal, dialogType } = this.state;
 
     return (
-      <Fragment>
+      <Fragment>        
         <Card className="card-chart">
           <CardHeader>
             <Row>

@@ -1,5 +1,5 @@
 import Dashboard from 'components/Dashboard';
-import HomeDashboard from 'components/HomeDashboard';
+import Log from 'components/Log';
 
 var routes = [
   {
@@ -10,10 +10,10 @@ var routes = [
     layout: '/',
   },
   {
-    path: '/home',
-    name: 'HomeDashboard',
+    path: '/log',
+    name: 'Log',
     icon: 'tim-icons icon-bell-55',
-    component: HomeDashboard,
+    component: Log,
     layout: '/home',
   }
 ];

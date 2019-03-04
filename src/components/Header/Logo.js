@@ -28,8 +28,6 @@ class Logo extends Component {
 
   handleGetStatus = () => {
     const { showNotification } = this.props;
-
-    // axios.get('http://192.168.1.11/ay')
     axios
       .get('http://cassusa.go.ro:3001/api/status')
       .then(function(response) {
