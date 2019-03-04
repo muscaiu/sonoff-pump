@@ -23,6 +23,16 @@ class LivingTempChart extends Component {
     fbLivingTempList: [],
   };
 
+  state = {
+    temperature: ''
+  }
+
+  componentDidMount() {
+    fetch('http://cassusa.go.ro:3001/api/statusliving')
+      .then(response => response.json())
+      .then(data => this.setState({ temperature: data.temperature }))
+  }
+
   getTodayTemp = () => {
     const { fbLivingTempList } = this.props;
     const hoursArray = [...Array(26).keys()].reverse();
@@ -44,13 +54,14 @@ class LivingTempChart extends Component {
   render() {
     const hoursArray = [...Array(24).keys()].reverse();
     const hoursLabels = hoursArray.map(hour => this.getHour(hour));
+    const { temperature } = this.state;
 
     return (
       <Card className="card-chart">
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Living Temperature last 24 hours</h5>
+              <h5 className="card-category">Living Temperature ({temperature})</h5>
             </Col>
           </Row>
         </CardHeader>

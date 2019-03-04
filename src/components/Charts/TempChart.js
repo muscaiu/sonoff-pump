@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
 import moment from 'moment';
-
+import axios from 'axios';
 import {
   Card,
   CardHeader,
@@ -27,18 +27,12 @@ class TempChart extends Component {
     temperature: ''
   }
 
-  // componentDidMount = async () => {
-  //   const response = await fetch('http://cassusa.go.ro:3001/api/status')
-  //   const json = await response.json();
-  //   console.log(json)
-  // }
-
   componentDidMount() {
-    fetch('http://cassusa.go.ro:3001/api/statusliving')
-      .then(response => response.json())
-      .then(data => this.setState({ temperature: data }))
+    axios.get('http://cassusa.go.ro:3001/api/statuspompa')
+    // fetch('http://cassusa.go.ro:3001/api/statuspompa')
+      // .then(response => response.json())
+      .then(data => this.setState({ temperature: data.temperature }))
   }
-
 
   getTodayTemp = () => {
     const { fbTempList } = this.props;
@@ -77,13 +71,13 @@ class TempChart extends Component {
   render() {
     const hoursArray = [...Array(24).keys()].reverse();
     const hoursLabels = hoursArray.map(hour => this.getHour(hour));
-
+    const { temperature } = this.state;
     return (
       <Card className="card-chart">
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Temperature & Humidity last 24 hours</h5>
+              <h5 className="card-category">Temperature & Humidity ({temperature})</h5>
             </Col>
           </Row>
         </CardHeader>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
-import axios from 'axios';
 
 import logo from 'assets/img/logo.svg';
 
