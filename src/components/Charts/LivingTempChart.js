@@ -13,6 +13,7 @@ import {
 
 // core components
 import { chart_temp_options } from "variables/charts";
+import withFetching from 'hocs/withFetching';
 
 class LivingTempChart extends Component {
   static proptypes = {
@@ -22,16 +23,6 @@ class LivingTempChart extends Component {
   static defaultProps = {
     fbLivingTempList: [],
   };
-
-  state = {
-    temperature: ''
-  }
-
-  componentDidMount() {
-    fetch('http://cassusa.go.ro:3001/api/statusliving')
-      .then(response => response.json())
-      .then(data => this.setState({ temperature: data.temperature }))
-  }
 
   getTodayTemp = () => {
     const { fbLivingTempList } = this.props;
@@ -54,7 +45,7 @@ class LivingTempChart extends Component {
   render() {
     const hoursArray = [...Array(24).keys()].reverse();
     const hoursLabels = hoursArray.map(hour => this.getHour(hour));
-    const { temperature } = this.state;
+    const temperature = this.props.data && this.props.data.temperature;
 
     return (
       <Card className="card-chart">
@@ -111,4 +102,4 @@ class LivingTempChart extends Component {
   }
 }
 
-export default LivingTempChart;
+export default withFetching('http://cassusa.go.ro:3001/api/statusliving')(LivingTempChart);

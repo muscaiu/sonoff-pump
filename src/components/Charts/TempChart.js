@@ -60,9 +60,8 @@ class TempChart extends Component {
   render() {
     const hoursArray = [...Array(24).keys()].reverse();
     const hoursLabels = hoursArray.map(hour => this.getHour(hour));
-    const { temperature } = this.state;
+    const temperature = this.props.data && this.props.data.temperature;
 
-    console.log(this.props)
     return (
       <Card className="card-chart">
         <CardHeader>
