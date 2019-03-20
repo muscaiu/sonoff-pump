@@ -1,0 +1,1 @@
+Temperature: 22.0

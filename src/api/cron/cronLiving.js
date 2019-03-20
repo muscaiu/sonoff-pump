@@ -1,14 +1,14 @@
 const CronJob = require('cron').CronJob;
 
 const { livingTempRef } = require('../firebaseRefs')
-const getLivingStatus = require('../getLivingStatus')
+const getStatusLiving = require('../getStatusLiving')
 
 //Hourly Temp Humidity and Status
-const livingTempCron = new CronJob(`0 0 * * * *`, function () {
-  getLivingStatus()
+const cronLiving = new CronJob(`0 0 * * * *`, function () {
+  getStatusLiving()
     .then(data => {
       livingTempRef.add({ ...data, createdAt: new Date() });
     })
 });
 
-module.exports = livingTempCron;
+module.exports = cronLiving;

@@ -2,10 +2,10 @@ const axios = require('axios');
 
 const logger = require('./logger');
 
-async function getStatus() {
+async function getStatusPompa() {
   try {
     let res = await axios({
-      url: 'http://192.168.1.11/ay',
+      url: 'http://192.168.1.12/ay',
       method: 'get',
       timeout: 10000,
       headers: {
@@ -16,11 +16,9 @@ async function getStatus() {
     const status = parseStatus[1].split('</div')[0]
     const parseTemperatureHumidity = res.data.split('{m}')
     const temperature = parseInt(parseTemperatureHumidity[1].split('&')[0])
-    const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0])
     return ({
       status,
-      temperature,
-      humidity
+      temperature
     })
   }
   catch (err) {
@@ -28,4 +26,4 @@ async function getStatus() {
   }
 }
 
-module.exports = getStatus;
+module.exports = getStatusPompa;

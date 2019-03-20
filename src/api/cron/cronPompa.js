@@ -1,14 +1,14 @@
 const CronJob = require('cron').CronJob;
 
 const { tempRef } = require('../firebaseRefs')
-const getStatus = require('../getStatus')
+const getStatusPompa = require('../getStatusPompa')
 
 //Hourly Temp Humidity and Status
-const tempCron = new CronJob(`0 0 * * * *`, function () {
-  getStatus()
+const cronPompa = new CronJob(`0 0 * * * *`, function () {
+  getStatusPompa()
     .then(data => {
       tempRef.add({ ...data, createdAt: new Date() });
     })
 });
 
-module.exports = tempCron;
+module.exports = cronPompa;

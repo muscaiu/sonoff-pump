@@ -7,27 +7,20 @@ const port = 3001;
 const app = express();
 const router = express.Router();
 
-const getLivingStatus = require('./getLivingStatus');
-const getStatus = require('./getStatus');
+const getStatusPompa = require('./getStatusPompa');
+const getStatusLiving = require('./getStatusLiving');
 const logger = require('./logger');
-const {
-  statusRef,
-  modeRef
-} = require('./firebaseRefs')
+const { statusRef, modeRef } = require('./firebaseRefs')
+const cronPompa = require('./cron/cronPompa');
+const cronLiving = require('./cron/cronLiving');
 
-//stop sonoff imediatelly
+//stop sonoffs imediatelly
 axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
 axios.get('http://192.168.1.12/cm?cmnd=Power%20off')
 
-
-
-const tempCron = require('./cron/tempCron');
-tempCron.start()
-const livingTempCron = require('./cron/livingTempCron');
-livingTempCron.start()
-logger.info('temp cron started');
-logger.info('livingTempCron cron started');
-
+//start crons
+cronPompa.start()
+cronLiving.start()
 
 let ignoreExistingStateEntries = true;
 let mode = 'unititialized';
@@ -52,7 +45,6 @@ modeRef
         }
       } else {
         mode = changed.value;
-        logger.info(`initial mode:  ${changed.value}`);
       }
     });
 
@@ -79,7 +71,6 @@ statusRef
         }
       } else {
         const initialStatus = changed.value;
-        logger.info(`initial status: ${initialStatus}`)
         if (initialStatus) {
           axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
           //http://sonoff/cm?cmnd=Power%20TOGGLE
@@ -90,8 +81,6 @@ statusRef
     });
     ignoreExistingStateEntries = false;
   });
-
-
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
 const customHour = 19;
@@ -122,23 +111,20 @@ const stopTime = new CronJob(`00 ${customMinute} ${customHour + 1} * * *`, funct
   }
 });
 
-logger.info(`mode: ${mode}`)
 startTime.start();
 stopTime.start();
-
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-router.get('/statusliving', function (req, res) {
-  getLivingStatus()
+router.get('/statuspompa', function (req, res) {
+  getStatusPompa()
     .then(data => res.json(data))
 });
 
-router.get('/statuspompa', function (req, res) {
-  getStatus()
+router.get('/statusliving', function (req, res) {
+  getStatusLiving()
     .then(data => res.json(data))
 });
 
@@ -148,9 +134,8 @@ router.get('/log', function (req, res) {
   res.send(logFile)
 });
 
-
 app.listen(port, function () {
-  logger.info(`API running on port ${port}`);
+  logger.info(`*** API running on port ${port} ***`);
 });
 
 app.use('/api', router);
