@@ -16,11 +16,11 @@ async function getStatusPompa() {
     const status = parseStatus[1].split('</div')[0]
     const parseTemperatureHumidity = res.data.split('{m}')
     const temperature = parseInt(parseTemperatureHumidity[1].split('&')[0])
-    const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0])
+    // const humidity = parseInt(parseTemperatureHumidity[2].split('%')[0])
     return ({
       status,
       temperature,
-      humidity
+      // humidity
     })
   }
   catch (err) {

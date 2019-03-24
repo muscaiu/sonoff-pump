@@ -39,21 +39,21 @@ class TempChart extends Component {
     return trueValues
   }
 
-  getTodayHum = () => {
-    const { fbTempList } = this.props;
-    const hoursArray = [...Array(26).keys()].reverse();
-    const trueValues = [];
+  // getTodayHum = () => {
+  //   const { fbTempList } = this.props;
+  //   const hoursArray = [...Array(26).keys()].reverse();
+  //   const trueValues = [];
 
-    hoursArray.forEach(hour => {
-      const selectedHour = moment().subtract(hour, 'hour')
-      fbTempList && fbTempList.forEach(data => {
-        if (data.createdAt && moment(data.createdAt.toDate()).isSame(selectedHour, 'hour')) {
-          trueValues.push(data.humidity)
-        }
-      })
-    });
-    return trueValues
-  }
+  //   hoursArray.forEach(hour => {
+  //     const selectedHour = moment().subtract(hour, 'hour')
+  //     fbTempList && fbTempList.forEach(data => {
+  //       if (data.createdAt && moment(data.createdAt.toDate()).isSame(selectedHour, 'hour')) {
+  //         trueValues.push(data.humidity)
+  //       }
+  //     })
+  //   });
+  //   return trueValues
+  // }
 
   getHour = hours => moment().subtract(hours, 'hour').format('HH')
 
@@ -67,7 +67,7 @@ class TempChart extends Component {
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Temperature & Humidity ({temperature})</h5>
+              <h5 className="card-category">Temperature ({temperature})</h5>
             </Col>
           </Row>
         </CardHeader>
@@ -104,26 +104,27 @@ class TempChart extends Component {
                         // notice t`he gap in the data and the spanGaps: true
                         data: this.getTodayTemp(),
                         spanGaps: true,
-                      }, {
-                        hidden: true,
-                        label: "Humidity",
-                        lineTension: 0.1,
-                        fill: true,
-                        backgroundColor: gradientStroke,
-                        borderColor: "#00d6b4",
-                        borderWidth: 2,
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        pointBackgroundColor: "#00d6b4",
-                        pointBorderColor: "rgba(255,255,255,0)",
-                        pointHoverBackgroundColor: "#00d6b4",
-                        pointBorderWidth: 20,
-                        pointHoverRadius: 4,
-                        pointHoverBorderWidth: 15,
-                        // notice the gap in the data and the spanGaps: false
-                        data: this.getTodayHum(),
-                        spanGaps: true,
                       }
+                      // , {
+                      //   hidden: true,
+                      //   label: "Humidity",
+                      //   lineTension: 0.1,
+                      //   fill: true,
+                      //   backgroundColor: gradientStroke,
+                      //   borderColor: "#00d6b4",
+                      //   borderWidth: 2,
+                      //   borderDash: [],
+                      //   borderDashOffset: 0.0,
+                      //   pointBackgroundColor: "#00d6b4",
+                      //   pointBorderColor: "rgba(255,255,255,0)",
+                      //   pointHoverBackgroundColor: "#00d6b4",
+                      //   pointBorderWidth: 20,
+                      //   pointHoverRadius: 4,
+                      //   pointHoverBorderWidth: 15,
+                      //   // notice the gap in the data and the spanGaps: false
+                      //   data: this.getTodayHum(),
+                      //   spanGaps: true,
+                      // }
                       ]
                   };
                 }

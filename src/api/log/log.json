@@ -17,3 +17,5 @@
 {"message":"OFF","level":"debug","timestamp":"2019-03-20 08:31:28"}
 {"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-03-20 08:37:31"}
 {"message":"OFF","level":"debug","timestamp":"2019-03-20 08:37:44"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-03-24 23:28:50"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-03-24 23:28:53"}

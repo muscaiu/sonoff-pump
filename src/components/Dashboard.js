@@ -8,7 +8,7 @@ import createDashboard from 'hocs/createDashboard';
 import Header from 'components/Header/Header';
 import StatusChart from 'components/Charts/StatusChart';
 import TempChart from 'components/Charts/TempChart';
-import LivingTempChart from 'components/Charts/LivingTempChart';
+// import LivingTempChart from 'components/Charts/LivingTempChart';
 
 class Dashboard extends React.Component {
   showNotification = (place, type, message) => {
@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
       fbLastAction,
       fbStatusList,
       fbTempList,
-      fbLivingTempList
+      // fbLivingTempList
     } = this.props;
 
     return (
@@ -59,11 +59,11 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
 
-          <Row>
+          {/* <Row>
             <Col xs="12">
               <LivingTempChart fbLivingTempList={fbLivingTempList} />
             </Col>
-          </Row>
+          </Row> */}
 
         </div>
         <NotificationAlert ref="notificationAlert" />
@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
     fbLastAction: PropTypes.object,
     fbStatusList: PropTypes.array,
     fbTempList: PropTypes.array,
-    fbLivingTempList: PropTypes.array
+    // fbLivingTempList: PropTypes.array
   };
 }
 

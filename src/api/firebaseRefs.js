@@ -10,12 +10,12 @@ db.settings({ timestampsInSnapshots: true });
 
 const statusRef = db.collection('status');
 const tempRef = db.collection('temp');
-const livingTempRef = db.collection('livingTemp');
+// const livingTempRef = db.collection('livingTemp');
 const modeRef = db.collection('mode');
 
 module.exports = {
   statusRef,
   modeRef,
   tempRef,
-  livingTempRef
+  // livingTempRef
 }

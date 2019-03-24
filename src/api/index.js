@@ -8,19 +8,19 @@ const app = express();
 const router = express.Router();
 
 const getStatusPompa = require('./getStatusPompa');
-const getStatusLiving = require('./getStatusLiving');
+// const getStatusLiving = require('./getStatusLiving');
 const logger = require('./logger');
 const { statusRef, modeRef } = require('./firebaseRefs')
 const cronPompa = require('./cron/cronPompa');
-const cronLiving = require('./cron/cronLiving');
+// const cronLiving = require('./cron/cronLiving');
 
-//stop sonoffs imediatelly
+//stop sonof imediatelly
 axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
-axios.get('http://192.168.1.12/cm?cmnd=Power%20off')
+// axios.get('http://192.168.1.12/cm?cmnd=Power%20off')
 
 //start crons
 cronPompa.start()
-cronLiving.start()
+// cronLiving.start()
 
 let ignoreExistingStateEntries = true;
 let mode = 'unititialized';
@@ -123,16 +123,25 @@ router.get('/statuspompa', function (req, res) {
     .then(data => res.json(data))
 });
 
-router.get('/statusliving', function (req, res) {
-  getStatusLiving()
-    .then(data => res.json(data))
-});
+// router.get('/statusliving', function (req, res) {
+//   getStatusLiving()
+//     .then(data => res.json(data))
+// });
 
 router.get('/log', function (req, res) {
   var fs = require('fs');
   var logFile = fs.readFileSync('./log/log.json').toString().split("\n");
   res.send(logFile)
 });
+
+
+//TODO: temporary solution xD
+router.get('/toggleliving', function (req, res) {
+  console.log('toggleliving')
+  axios.get('http://192.168.1.12/cm?cmnd=Power%20TOGGLE');
+  res.send({})
+});
+
 
 app.listen(port, function () {
   logger.info(`*** API running on port ${port} ***`);
