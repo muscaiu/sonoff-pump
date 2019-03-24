@@ -135,11 +135,21 @@ router.get('/log', function (req, res) {
 });
 
 
-//TODO: temporary solution xD
+//TODO: temporary solution for the HA project
 router.get('/toggleliving', function (req, res) {
-  console.log('toggleliving')
   axios.get('http://192.168.1.12/cm?cmnd=Power%20TOGGLE');
   res.send({})
+});
+router.get('/statusliving', function (req, res) {
+  //circularJSON to prevent err: Converting circular structure to JSON 
+  const CircularJSON = require('circular-json');
+  axios.get('http://192.168.1.12/cm?cmnd=Status')
+    .then((response) => {
+      let json = CircularJSON.stringify(response);
+      res.send(json);
+    }).catch((error) => {
+      console.log(error);
+    });
 });
 
 
