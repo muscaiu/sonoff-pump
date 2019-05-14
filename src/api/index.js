@@ -8,19 +8,15 @@ const app = express();
 const router = express.Router();
 
 const getStatusPompa = require('./getStatusPompa');
-// const getStatusLiving = require('./getStatusLiving');
 const logger = require('./logger');
 const { statusRef, modeRef } = require('./firebaseRefs')
 const cronPompa = require('./cron/cronPompa');
-// const cronLiving = require('./cron/cronLiving');
 
 //stop sonof imediatelly
 axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
-// axios.get('http://192.168.1.12/cm?cmnd=Power%20off')
 
 //start crons
 cronPompa.start()
-// cronLiving.start()
 
 let ignoreExistingStateEntries = true;
 let mode = 'unititialized';
@@ -71,6 +67,7 @@ statusRef
         }
       } else {
         const initialStatus = changed.value;
+        logger.debug(`initialStatus: ${initialStatus}`);
         if (initialStatus) {
           axios.get('http://192.168.1.11/cm?cmnd=Power%20On')
           //http://sonoff/cm?cmnd=Power%20TOGGLE
@@ -84,7 +81,7 @@ statusRef
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
 const customHour = 19;
-const customMinute = 0;
+const customMinute = 00;
 
 const startTime = new CronJob(`00 ${customMinute} ${customHour} * * *`, function () {
   if (mode === 'auto') {
@@ -122,11 +119,6 @@ router.get('/statuspompa', function (req, res) {
   getStatusPompa()
     .then(data => res.json(data))
 });
-
-// router.get('/statusliving', function (req, res) {
-//   getStatusLiving()
-//     .then(data => res.json(data))
-// });
 
 router.get('/log', function (req, res) {
   var fs = require('fs');
