@@ -1,6 +1,6 @@
-const { startTime, stopTime } = require('./cron/startStopTime');
-const temperatureCron = require('./cron/temperatureCron');
+const { startTime, stopTime } = require('./cron/startStopCron');
 const { statusTrigger, modeTrigger } = require('./triggers');
+const temperatureCron = require('./cron/temperatureCron');
 
 function initialize() {
   //start timers
