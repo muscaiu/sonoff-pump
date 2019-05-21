@@ -9,7 +9,9 @@ function initialize() {
   temperatureCron.start();
 
   //start triggers
-  statusTrigger();
+  // setTimeout(() => {
+    statusTrigger();
+  // }, 50000);
   modeTrigger();
 }
 
