@@ -529,3 +529,12 @@
 {"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-14 21:28:40"}
 {"message":"initialStatus: true","level":"debug","timestamp":"2019-05-14 21:29:01"}
 {"message":"db mode set to auto","level":"debug","timestamp":"2019-05-14 21:29:01"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-19 20:18:27"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-05-19 20:18:31"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-19 20:18:31"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-19 20:27:36"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-05-19 20:27:39"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-19 20:27:39"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-19 20:28:27"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-19 20:28:38"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-19 20:28:38"}

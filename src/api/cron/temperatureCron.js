@@ -3,7 +3,7 @@ const logger = require('../logger');
 const { tempRef } = require('../firebaseRefs')
 const getStatusPompa = require('../getStatusPompa')
 
-const temperatureCron = new CronJob(`30 0 * * * *`, function () {
+const temperatureCron = new CronJob(`30 1 * * * *`, function () {
   getStatusPompa()
     .then(data => {
       try {

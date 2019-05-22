@@ -45,11 +45,8 @@ function modeTrigger() {
       let changes = modeSnapshot.docChanges();
       const lastMode = changes[0].doc.data().value;
 
-      logger.debug(`lastMode: ${lastMode}`)
-
       modeState.setMode = lastMode;
       logger.debug(`db mode set to ${lastMode}`);
-
     });
 }
 

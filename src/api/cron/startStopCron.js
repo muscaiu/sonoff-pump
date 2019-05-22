@@ -23,12 +23,12 @@ function addRecord(option) {
 }
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
-const hourStart = '08';
-const hourStop = '08';
-const minuteStart = '50';
-const minuteStop = '52';
+const hourStart = '9';
+const hourStop = '9';
+const minuteStart = '0';
+const minuteStop = '30';
 
-const startTime = new CronJob(`05 ${minuteStart} ${hourStart} * * *`, function () {
+const startTime = new CronJob(`5 ${minuteStart} ${hourStart} * * *`, function () {
   logger.warn(`start minute ${minuteStart} hour ${hourStart}`);
   addRecord('start');
 });
