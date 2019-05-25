@@ -41,7 +41,7 @@ const Header = ({
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Auto interval 19:00 - 20:00</h5>
+              <h5 className="card-category">Auto interval 09:00 - 09:30</h5>
               <CardTitle tag="h3">
                 <i className="tim-icons icon-bell-55 text-info" /> {fbStatus ? 'ON' : 'OFF'}
               </CardTitle>
