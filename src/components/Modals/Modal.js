@@ -11,13 +11,6 @@ import { Button } from 'reactstrap';
 import * as authActions from 'actions/authActions';
 
 class Modal extends Component {
-  static propTypes = {
-    isActive: PropTypes.bool.isRequired,
-    show: PropTypes.bool.isRequired,
-    mode: PropTypes.string,
-    showNotification: PropTypes.func.isRequired,
-  };
-
   state = {
     open: this.props.show,
     password: '',
@@ -27,7 +20,7 @@ class Modal extends Component {
     this.setState({ open: nextProps.show });
   }
 
-  handleClose = e => {
+  handleCloseClick = e => {
     this.props.onClose(e);
   };
 
@@ -35,7 +28,7 @@ class Modal extends Component {
     this.setState({ password: e.target.value });
   };
 
-  handleLogin = () => {
+  handleLoginClick = () => {
     const { password } = this.state;
     const { isActive, showNotification, mode, type } = this.props;
     const credentials = {
@@ -44,13 +37,14 @@ class Modal extends Component {
     };
     this.props.login(credentials, type === 'onoff' ? isActive : mode, showNotification);
     this.setState({ password: '' });
-    this.handleClose();
+    this.handleCloseClick();
   };
 
   render() {
     const { type } = this.props;
+
     return (
-      <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={this.state.open} onClose={this.handleCloseClick} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">
           {type === 'mode' ? 'Need password to change mode' : 'Need password to change status'}
         </DialogTitle>
@@ -63,14 +57,14 @@ class Modal extends Component {
             type="password"
             fullWidth
             onChange={this.handlePasswordChange}
-            onKeyPress={ev => ev.key === 'Enter' && this.handleLogin()}
+            onKeyPress={ev => ev.key === 'Enter' && this.handleLoginClick()}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleClose} color="secondary">
+          <Button onClick={this.handleCloseClick} color="secondary">
             Cancel
           </Button>
-          <Button onClick={this.handleLogin} color="primary">
+          <Button onClick={this.handleLoginClick} color="primary">
             Confirm
           </Button>
         </DialogActions>
@@ -83,3 +77,10 @@ export default connect(
   null,
   authActions,
 )(Modal);
+
+Modal.propTypes = {
+  isActive: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired,
+  mode: PropTypes.string,
+  showNotification: PropTypes.func.isRequired,
+}

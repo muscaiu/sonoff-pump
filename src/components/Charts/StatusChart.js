@@ -65,36 +65,14 @@ class StatusChart extends Component {
         return total ? Math.floor(total / 60) : 0
     }
 
-    // getMonthlyTotal = (month) => {
-    //     const { fbStatusList } = this.props;
-    //     const trueValues = [];
-    //     let prev;
-    //     const selectedMonth = moment().subtract(month, 'month')
-
-    //     fbStatusList && fbStatusList.map(status => {
-    //         if (status.createdAt && moment(status.createdAt.toDate()).isSame(selectedMonth, 'month')) {
-    //             if (status.value === false) {
-    //                 prev = moment(status.createdAt.toDate(), "YYYYMMDD HH:mm:ss")
-    //             } else {
-    //                 trueValues.push(prev && prev.diff(moment(status.createdAt.toDate()), "seconds"))
-    //             }
-    //         }
-    //     })
-    //     const total = trueValues.length > 0 && trueValues.reduce((acc, curr) => acc + curr)
-    //     return total ? Math.floor(total / 60) : 0
-    // }
-
     render() {
         const { chartOption } = this.state;
         const daysArray = [6, 5, 4, 3, 2, 1, 0]
         const monthArray = [...Array(30).keys()]
-        // const yearArray = [...Array(12).keys()]
         const dayLabels = daysArray.map(day => this.getDay(day))
         const monthLabels = monthArray.reverse().map(day => this.getDayOfMonth(day))
-        // const yearLabels = yearArray.reverse().map(month => this.getMonth(month))
         const lastWeek = daysArray.map(day => this.getDailyTotal(day))
         const lastMonth = monthArray.map(day => this.getDailyTotal(day))
-        // const lastYear = monthArray.map(month => this.getMonthlyTotal(month))
         const totalLastWeek = (lastWeek.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
         const totalLastMonth = (lastMonth.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
 
@@ -142,28 +120,6 @@ class StatusChart extends Component {
                                         Month
                                     </span>
                                 </Button>
-                                {/* <Button
-                                    color="info"
-                                    id="2"
-                                    size="sm"
-                                    tag="label"
-                                    className={classNames("btn-simple", {
-                                        active: chartOption === "year"
-                                    })}
-                                    onClick={() => this.setChartOption("year")}
-                                >
-                                    <input
-                                        className="d-none"
-                                        name="options"
-                                        type="radio"
-                                    />
-                                    <span className="d-sm-block d-md-block d-lg-block d-xl-block">
-                                        Year
-                                    </span>
-                                    <span className="d-block d-sm-none">
-                                        <i className="tim-icons icon-tap-02" />
-                                    </span>
-                                </Button> */}
                             </ButtonGroup>
                         </Col>
                     </Row>

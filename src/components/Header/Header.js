@@ -4,21 +4,9 @@ import styled from 'styled-components';
 import moment from 'moment';
 
 import { ButtonGroup, Card, CardHeader, CardBody, CardTitle, Row, Col } from 'reactstrap';
-
-import withModal from 'hocs/withModal';
-
-import pack from '../../../package.json';
 import Logo from 'components/Header/Logo';
 import OnOffSwitch from 'components/Header/OnOffSwitch';
-import Modal from 'components/Modals/Modal';
 import { AutoButton, ManualButton } from 'components/Buttons';
-
-const Version = styled.div`
-  color: darkgrey;
-  font-size: 8px;
-  position: fixed;
-  bottom: 10px;
-`;
 
 const Distance = styled.div`
   color: #9a9a9a;
@@ -32,8 +20,6 @@ const Header = ({
   fbMode,
   showNotification,
   onToggleModal,
-  showModal,
-  dialogType,
   fbLastAction
 }) => (
     <React.Fragment>
@@ -64,26 +50,18 @@ const Header = ({
                   onStatusClick={this.hanldeToggleStats}
                   mode={fbMode}
                   showNotification={showNotification}
+                  onToggleModal={onToggleModal}
                 />
                 <Distance>last action: {getLastAction(fbLastAction)}</Distance>
-                <Version>version: {pack.version}</Version>
               </Col>
             </Row>
           </div>
         </CardBody>
       </Card>
-      <Modal
-        type={dialogType}
-        show={showModal}
-        onClose={() => onToggleModal(false)}
-        showNotification={showNotification}
-        isActive={fbStatus}
-        mode={fbMode}
-      />
     </React.Fragment>
   )
 
-export default withModal(Header);
+export default Header;
 
 Header.propTypes = {
   fbStatus: PropTypes.bool.isRequired,

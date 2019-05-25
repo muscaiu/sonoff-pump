@@ -1,5 +1,7 @@
 import React from 'react';
 
+// import Modal from 'components/Modals/Modal';
+
 export default function withModal(WrappedComponent) {
     class Dialog extends React.Component {
         state = {
@@ -14,15 +16,9 @@ export default function withModal(WrappedComponent) {
             });
         };
 
-        handleNotifyDisabled = () => {
-            const { showNotification, mode } = this.props;
-            if (mode === 'auto') {
-                showNotification('bc', 'warning', 'Disabled in Auto Mode');
-            }
-        };
-
         render() {
             const { showModal, dialogType } = this.state;
+
             return (
                 <WrappedComponent
                     {...this.props}

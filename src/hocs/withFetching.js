@@ -28,7 +28,13 @@ const withFetching = (url) => (Component) =>
     }
 
     render() {
-      return <Component {...this.props} {...this.state} />;
+
+      return (
+        <Component
+          {...this.props}
+          {...this.state}
+        />
+      )
     }
   }
 

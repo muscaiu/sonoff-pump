@@ -15,13 +15,6 @@ import { chart_temp_options } from "variables/charts";
 import withFetching from 'hocs/withFetching';
 
 class TempChart extends Component {
-  static proptypes = {
-    fbTempList: PropTypes.array
-  }
-
-  static defaultProps = {
-    fbTempList: [],
-  };
 
   getTodayTemp = () => {
     const { fbTempList } = this.props;
@@ -100,6 +93,13 @@ class TempChart extends Component {
       </Card>
     )
   }
+}
+
+TempChart.propTypes = {
+  fbTempList: PropTypes.array
+}
+TempChart.defaultProps = {
+  fbTempList: [],
 }
 
 export default withFetching('http://cassusa.go.ro:3001/api/statuspompa')(TempChart);

@@ -21,11 +21,6 @@ router.get('/statuspompa', function (req, res) {
     .catch(err => logger.warn(err))
 });
 
-// router.get('/log', function (req, res) {
-//   var fs = require('fs');
-//   var logFile = fs.readFileSync('./log/log.json').toString().split("\n");
-//   res.send(logFile)
-// });
 
 //TODO: temporary solution for the HA project
 router.get('/toggleliving', function (req, res) {

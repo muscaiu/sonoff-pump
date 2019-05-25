@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Switch from '@material-ui/core/Switch';
 
-import Modal from 'components/Modals/Modal';
-import withModal from 'hocs/withModal';
-
 const OnOff = styled.span`
   ${props => `color: ${props.color}`};
 `;
@@ -15,19 +12,23 @@ const SwitchWrapper = styled.div`
 `;
 
 class OnOffSwitch extends Component {
+
+  handleNotifyDisabled = () => {
+    const { showNotification, mode } = this.props;
+    if (mode === 'auto') {
+      showNotification('bc', 'warning', 'Disabled in Auto Mode');
+    }
+  };
+
   render() {
     const {
       isActive,
       mode,
-      showNotification,
-      showModal,
-      dialogType,
       onToggleModal,
-      onNotifyDisabled
     } = this.props;
     return (
       <Fragment>
-        <SwitchWrapper onClick={onNotifyDisabled}>
+        <SwitchWrapper onClick={this.handleNotifyDisabled}>
           <OnOff color={isActive ? '#BDBDBD' : '#1f8ef1'}>Off</OnOff>
           <Switch
             disabled={mode === 'auto'}
@@ -39,20 +40,12 @@ class OnOffSwitch extends Component {
           <OnOff color={isActive ? '#1f8ef1' : '#BDBDBD'}>On</OnOff>
         </SwitchWrapper>
 
-        <Modal
-          type={dialogType}
-          show={showModal}
-          onClose={() => onToggleModal(false)}
-          showNotification={showNotification}
-          isActive={isActive}
-          mode={mode}
-        />
       </Fragment>
     );
   }
 }
 
-export default withModal(OnOffSwitch);
+export default OnOffSwitch;
 
 OnOffSwitch.prototypes = {
   isActive: PropTypes.bool,
