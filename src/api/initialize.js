@@ -7,8 +7,9 @@ function initialize() {
   //start timers
   startTime.start();
   stopTime.start();
-  // temperatureCron.start();
+
   logger.warn('starting without temp cron')
+  // temperatureCron.start();
   //start triggers
   statusTrigger();
   modeTrigger();

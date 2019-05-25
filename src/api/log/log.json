@@ -719,3 +719,42 @@
 {"message":"pompa stoped by cron","level":"debug","timestamp":"2019-05-22 09:20:10"}
 {"message":"lastStatus: true","level":"debug","timestamp":"2019-05-22 09:20:10"}
 {"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-22 09:20:10"}
+{"message":"starting without temp cron","level":"warn","timestamp":"2019-05-22 20:09:38"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-22 20:09:38"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-22 20:09:41"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-22 20:09:41"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-22 20:09:41"}
+{"message":"start minute 0 hour 9","level":"warn","timestamp":"2019-05-23 09:00:05"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-05-23 09:00:05"}
+{"message":"stop minute 30 hour 9","level":"warn","timestamp":"2019-05-23 09:30:10"}
+{"message":"pompa stoped by cron","level":"debug","timestamp":"2019-05-23 09:30:10"}
+
+{"level":"warn","timestamp":"2019-05-23 14:31:10"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-23 21:09:49"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-23 21:09:50"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-05-23 21:09:50"}
+{"message":"starting without temp cron","level":"warn","timestamp":"2019-05-24 08:07:49"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-24 08:07:49"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 08:07:52"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-24 08:07:52"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-24 08:07:52"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-24 08:13:58"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 08:14:02"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-24 08:14:02"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-24 08:14:02"}
+{"message":"pompa started by cron","level":"debug","timestamp":"2019-05-24 08:15:05"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 08:15:05"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-05-24 08:15:05"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-24 08:29:39"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 08:29:42"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-24 08:29:42"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-24 08:29:42"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 08:30:05"}
+{"message":"db event triggered: pompa started","level":"debug","timestamp":"2019-05-24 08:30:05"}
+{"message":"added new status record lTTxP1ukXi4PvQ6PSd4U","level":"debug","timestamp":"2019-05-24 08:30:05"}
+{"message":"added new temp record IrQUNsoSwkMse5eOMRSm","level":"debug","timestamp":"2019-05-24 09:00:31"}
+{"message":"starting without temp cron","level":"warn","timestamp":"2019-05-24 10:04:23"}
+{"message":"*** API running on port 3001 ***","level":"info","timestamp":"2019-05-24 10:04:23"}
+{"message":"db mode set to auto","level":"debug","timestamp":"2019-05-24 10:04:27"}
+{"message":"lastStatus: false","level":"debug","timestamp":"2019-05-24 10:04:27"}
+{"message":"db event triggered: pompa stopped","level":"debug","timestamp":"2019-05-24 10:04:27"}
