@@ -12,16 +12,14 @@ function addRecord(option) {
     statusRef
       .add({ value: setValue(), createdAt: new Date() })
       .then(ref => logger.debug(`added new status record ${ref.id}`))
-
-    // logger.debug(`pompa ${option}ed by cron`);
   } else {
     logger.warn(`cant ${option} auto because is currently in manual mode`);
   }
 }
 
 // seconds(0 - 59), minutes(0 - 59), hours(0 - 23), day of month(1 - 31), months0 - 11, day of week(0 - 6)
-const hourStart = '10';
-const hourStop = '11';
+const hourStart = '15';
+const hourStop = '16';
 const minuteStart = '35';
 const minuteStop = '35';
 

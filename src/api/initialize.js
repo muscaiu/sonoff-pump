@@ -7,7 +7,7 @@ function initialize() {
   //start timers
   startTime.start();
   stopTime.start();
-
+  // logger.warn('without start stop cron')
   temperatureCron.start();
   //start triggers
   statusTrigger();

@@ -8,6 +8,7 @@ const router = express.Router();
 const initialize = require('./initialize');
 const getStatusPompa = require('./getStatusPompa');
 const logger = require('./logger');
+const modeState = require('./modeState')
 
 initialize();
 
@@ -21,6 +22,16 @@ router.get('/statuspompa', function (req, res) {
     .catch(err => logger.warn(err))
 });
 
+router.post('/setmode', function (req, res) {
+  console.log(req.body)
+  // modeState.setMode = lastMode;
+});
+
+// router.get('/log', function (req, res) {
+//   var fs = require('fs');
+//   var logFile = fs.readFileSync('./log/log.json').toString().split("\n");
+//   res.send(logFile)
+// });
 
 //TODO: temporary solution for the HA project
 router.get('/toggleliving', function (req, res) {
