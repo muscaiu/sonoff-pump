@@ -3,15 +3,33 @@ import { apiDefaultAction } from 'middleware/apiDefaultAction';
 export function fetchInitialMode() {
   return apiDefaultAction({
     url: "http://localhost:3001/api/mode",
-    onSuccess: setInitialMode,
+    onSuccess: data => ({
+      type: 'MODE_SET',
+      payload: data
+    }),
     onFailure: () => { console.log("Error occured loading mode") },
     label: 'FETCHING_MODE'
   });
 }
 
-function setInitialMode(data) {
-  return {
-    type: 'MODE_SET',
-    payload: data
-  };
+export function toggleMode(option, showNotification) {
+  return apiDefaultAction({
+    url: "http://localhost:3001/api/mode/create",
+    method: 'POST',
+    data: {
+      value: option === 'manual' ? 'auto' : 'manual'
+    },
+    onSuccess: data => {
+      showNotification(
+        'bc',
+        'success',
+        `Success, Mode ${data.value === 'auto' ? 'Auto' : 'Manual'}`,
+      );
+      return {
+        type: 'MODE_TOGGLE',
+        payload: data
+      }
+    },
+    onFailure: () => { console.log("Error occured loading status") },
+  });
 }

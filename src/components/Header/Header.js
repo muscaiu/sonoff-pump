@@ -46,13 +46,16 @@ const Header = ({
             <Row>
               <Col className="ml-auto mr-auto text-center" md="6">
                 <Logo isActive={status} showNotification={showNotification} />
-                <OnOffSwitch
-                  isActive={status}
-                  onStatusClick={this.hanldeToggleStats}
-                  mode={mode}
-                  showNotification={showNotification}
-                  onToggleModal={onToggleModal}
-                />
+                {
+                  (status === true || status === false) &&
+                  <OnOffSwitch
+                    isActive={status}
+                    onStatusClick={this.hanldeToggleStats}
+                    mode={mode}
+                    showNotification={showNotification}
+                    onToggleModal={onToggleModal}
+                  />
+                }
                 <Distance>last action: {getLastAction(lastAction)}</Distance>
               </Col>
             </Row>

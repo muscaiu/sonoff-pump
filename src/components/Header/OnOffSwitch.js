@@ -26,7 +26,7 @@ class OnOffSwitch extends Component {
       mode,
       onToggleModal,
     } = this.props;
-
+    
     return (
       <Fragment>
         <SwitchWrapper onClick={this.handleNotifyDisabled}>
