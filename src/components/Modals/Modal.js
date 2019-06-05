@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import TextField from '@material-ui/core/TextField';
@@ -32,7 +31,7 @@ class Modal extends Component {
     const { password } = this.state;
     const { isActive, showNotification, mode, type } = this.props;
     const credentials = {
-      email: 'admin@yahoo.com',
+      username: 'admin',
       password,
     };
     this.props.login(credentials, type === 'onoff' ? isActive : mode, showNotification);
@@ -42,7 +41,6 @@ class Modal extends Component {
 
   render() {
     const { type } = this.props;
-
     return (
       <Dialog open={this.state.open} onClose={this.handleCloseClick} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">
@@ -73,14 +71,19 @@ class Modal extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  const { mode } = state;
+  return { modeState: mode }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   authActions,
 )(Modal);
 
 Modal.propTypes = {
-  isActive: PropTypes.bool.isRequired,
-  show: PropTypes.bool.isRequired,
-  mode: PropTypes.string,
-  showNotification: PropTypes.func.isRequired,
+  // isActive: PropTypes.bool.isRequired,
+  // show: PropTypes.bool.isRequired,
+  // mode: PropTypes.string,
+  // showNotification: PropTypes.func.isRequired,
 }

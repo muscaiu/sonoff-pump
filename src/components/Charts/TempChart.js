@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 
 import { chart_temp_options } from "variables/charts";
-import withFetching from 'hocs/withFetching';
+// import withFetching from 'hocs/withFetching';
 
 class TempChart extends Component {
 
@@ -102,4 +102,5 @@ TempChart.defaultProps = {
   fbTempList: [],
 }
 
-export default withFetching('http://cassusa.go.ro:3001/api/statuspompa')(TempChart);
+// export default withFetching('http://localhost:3001/api/statuspompa')(TempChart);
+export default TempChart;

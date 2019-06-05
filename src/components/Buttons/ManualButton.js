@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import classNames from 'classnames';
 
-const ManualButton = ({ fbMode, onToggleModal }) => (
+const ManualButton = ({ mode, onToggleModal }) => (
     <Button
-        onClick={() => fbMode === 'auto' && onToggleModal(true, 'mode')}
+        onClick={() => mode === 'auto' && onToggleModal(true, 'mode')}
         tag="label"
         className={classNames('btn-simple', {
-            active: fbMode === 'manual',
+            active: mode === 'manual',
         })}
         color="info"
         id="0"

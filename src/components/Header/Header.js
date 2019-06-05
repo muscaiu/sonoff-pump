@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
 
@@ -13,15 +12,17 @@ const Distance = styled.div`
   font-size: 15px;
 `;
 
-const getLastAction = (fbLastAction) => fbLastAction && moment(fbLastAction.toDate()).from();
+const getLastAction = (lastAction) => lastAction && moment(lastAction).from();
 
 const Header = ({
-  fbStatus,
-  fbMode,
   showNotification,
   onToggleModal,
-  fbLastAction
-}) => (
+  mode,
+  status,
+  lastAction,
+}) => {
+
+  return (
     <React.Fragment>
       <Card className="card-chart">
         <CardHeader>
@@ -29,13 +30,13 @@ const Header = ({
             <Col className="text-left" sm="6">
               <h5 className="card-category">Auto interval 09:00 - 09:30</h5>
               <CardTitle tag="h3">
-                <i className="tim-icons icon-bell-55 text-info" /> {fbStatus ? 'ON' : 'OFF'}
+                <i className="tim-icons icon-bell-55 text-info" /> {status ? 'ON' : 'OFF'}
               </CardTitle>
             </Col>
             <Col sm="6">
               <ButtonGroup className="btn-group-toggle float-right" data-toggle="buttons">
-                <AutoButton fbMode={fbMode} onToggleModal={onToggleModal} />
-                <ManualButton fbMode={fbMode} onToggleModal={onToggleModal} />
+                <AutoButton mode={mode} onToggleModal={onToggleModal} />
+                <ManualButton mode={mode} onToggleModal={onToggleModal} />
               </ButtonGroup>
             </Col>
           </Row>
@@ -44,15 +45,15 @@ const Header = ({
           <div className="places-buttons">
             <Row>
               <Col className="ml-auto mr-auto text-center" md="6">
-                <Logo isActive={fbStatus} showNotification={showNotification} />
+                <Logo isActive={status} showNotification={showNotification} />
                 <OnOffSwitch
-                  isActive={fbStatus}
+                  isActive={status}
                   onStatusClick={this.hanldeToggleStats}
-                  mode={fbMode}
+                  mode={mode}
                   showNotification={showNotification}
                   onToggleModal={onToggleModal}
                 />
-                <Distance>last action: {getLastAction(fbLastAction)}</Distance>
+                <Distance>last action: {getLastAction(lastAction)}</Distance>
               </Col>
             </Row>
           </div>
@@ -60,12 +61,6 @@ const Header = ({
       </Card>
     </React.Fragment>
   )
+}
 
 export default Header;
-
-Header.propTypes = {
-  fbStatus: PropTypes.bool.isRequired,
-  fbMode: PropTypes.string,
-  showNotification: PropTypes.func.isRequired,
-  fbLastAction: PropTypes.object,
-}

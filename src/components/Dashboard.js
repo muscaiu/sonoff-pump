@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import NotificationAlert from 'react-notification-alert';
 import { Row, Col } from 'reactstrap';
 import styled from 'styled-components';
@@ -31,62 +30,53 @@ class Dashboard extends React.Component {
 
   render() {
     const {
-      fbStatus,
-      fbMode,
-      fbLastAction,
       fbStatusList,
       fbTempList,
       showModal,
       dialogType,
       onToggleModal,
+      mode,
+      status,
+      lastAction,
     } = this.props;
-    console.log(this.props)
     return (
-      <Fragment>
-        <div className="content">
-          <Row>
-            <Col xs="12">
-              <Header
-                fbStatus={fbStatus}
-                fbMode={fbMode}
-                fbLastAction={fbLastAction}
-                showNotification={this.showNotification}
-                onToggleModal={onToggleModal}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs="12">
-              <StatusChart fbStatusList={fbStatusList} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs="12">
-              <TempChart fbTempList={fbTempList} />
-            </Col>
-          </Row>
-          <Version>version: {pack.version}</Version>
-        </div>
-        <NotificationAlert ref="notificationAlert" />
-        <Modal
-          type={dialogType}
-          show={showModal}
-          onClose={() => onToggleModal(false)}
-          showNotification={this.showNotification}
-          isActive={fbStatus}
-          mode={fbMode}
-        />
-      </Fragment>
+        <Fragment>
+          <div className="content">
+            <Row>
+              <Col xs="12">
+                <Header
+                  status={status}
+                  mode={mode}
+                  lastAction={lastAction}
+                  showNotification={this.showNotification}
+                  onToggleModal={onToggleModal}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs="12">
+                <StatusChart fbStatusList={fbStatusList} />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs="12">
+                <TempChart fbTempList={fbTempList} />
+              </Col>
+            </Row>
+            <Version>version: {pack.version}</Version>
+          </div>
+          <NotificationAlert ref="notificationAlert" />
+          <Modal
+            type={dialogType}
+            show={showModal}
+            onClose={() => onToggleModal(false)}
+            showNotification={this.showNotification}
+            isActive={status}
+            mode={mode}
+          />
+        </Fragment>
     )
   }
-}
-
-Dashboard.proptypes = {
-  fbStatus: PropTypes.bool.isRequired,
-  fbMode: PropTypes.string,
-  fbLastAction: PropTypes.object,
-  fbStatusList: PropTypes.array,
-  fbTempList: PropTypes.array,
 }
 
 export default createDashboard(withModal(Dashboard));

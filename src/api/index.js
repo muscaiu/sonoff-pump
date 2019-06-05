@@ -1,7 +1,9 @@
+import 'dotenv/config';
 const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const port = 3001;
 const app = express();
 const router = express.Router();
@@ -9,12 +11,19 @@ const initialize = require('./initialize');
 const getStatusPompa = require('./getStatusPompa');
 const logger = require('./logger');
 const modeState = require('./modeState')
+const config = require('./db');
+const Mode = require('./mode');
 
-initialize();
+mongoose.connect(config.DB, { useNewUrlParser: true }).then(
+  () => {console.log('Mongoose is connecterd') },
+  err => { console.log('Can not connect to the database'+ err)}
+);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+
+initialize();
 
 router.get('/statuspompa', function (req, res) {
   getStatusPompa()
@@ -22,16 +31,20 @@ router.get('/statuspompa', function (req, res) {
     .catch(err => logger.warn(err))
 });
 
-router.post('/setmode', function (req, res) {
-  console.log(req.body)
-  // modeState.setMode = lastMode;
+router.post('/setmode').post(function (req, res) {
+  console.log('req:', req.body)
+  const mode = new Mode(req.body);
+  mode.save()
+    .then(response => {
+      res.json('mode added successfully');
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
 });
 
-// router.get('/log', function (req, res) {
-//   var fs = require('fs');
-//   var logFile = fs.readFileSync('./log/log.json').toString().split("\n");
-//   res.send(logFile)
-// });
+
+
 
 //TODO: temporary solution for the HA project
 router.get('/toggleliving', function (req, res) {
@@ -59,6 +72,6 @@ app.use('/api', router);
 process.on('SIGINT', () => {
   //on ctrl+c
   // relay.unexport(); // Unexport relay GPIO to free resources
-  axios.get('hhttp://192.168.1.11/cm?cmnd=Power%20off')
+  axios.get('http://192.168.1.11/cm?cmnd=Power%20off')
   process.exit(); //exit completely
 });

@@ -18,7 +18,6 @@ export default function withModal(WrappedComponent) {
 
         render() {
             const { showModal, dialogType } = this.state;
-
             return (
                 <WrappedComponent
                     {...this.props}
