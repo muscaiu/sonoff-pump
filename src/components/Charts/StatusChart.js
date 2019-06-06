@@ -20,11 +20,11 @@ import { chart_status_options } from "variables/charts";
 
 class StatusChart extends Component {
     static proptypes = {
-        fbStatusList: PropTypes.array
+        statusList: PropTypes.array
     }
 
     static defaultProps = {
-        fbStatusList: [],
+        statusList: [],
     };
 
     state = {
@@ -42,20 +42,20 @@ class StatusChart extends Component {
     getMonth = month => moment().subtract(month, 'month').format('MMM')
 
     getDailyTotal = (day) => {
-        const { fbStatusList } = this.props;
+        const { statusList } = this.props;
         const trueValues = [];
         let prev;
         const selectedDay = moment().subtract(day, 'day')
 
-        fbStatusList && fbStatusList.forEach((status, index) => {
-            if (status.createdAt && moment(status.createdAt.toDate()).isSame(selectedDay, 'day')) {
+        statusList && statusList.forEach((status, index) => {
+            if (status.createdAt && moment(status.createdAt).isSame(selectedDay, 'day')) {
                 if (status.value === false) {
-                    prev = moment(status.createdAt.toDate(), "YYYYMMDD HH:mm:ss")
+                    prev = moment(status.createdAt, "YYYYMMDD HH:mm:ss")
                 } else {
                     if (index === 0) {
-                        trueValues.push(moment().diff(moment(status.createdAt.toDate()), "seconds"))
+                        trueValues.push(moment().diff(moment(status.createdAt), "seconds"))
                     } else {
-                        trueValues.push(prev && prev.diff(moment(status.createdAt.toDate()), "seconds"))
+                        trueValues.push(prev && prev.diff(moment(status.createdAt), "seconds"))
                     }
                 }
             }

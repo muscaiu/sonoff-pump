@@ -4,6 +4,8 @@ export default function (state = {}, action) {
     case 'API_START':
       if (
         action.payload === 'FETCHING_STATUS' ||
+        action.payload === 'FETCHING_STATUS_LIST' ||
+        action.payload === 'FETCHING_TEMPERATURE' ||
         action.payload === 'FETCHING_MODE'
       ) {
         return {
@@ -15,6 +17,8 @@ export default function (state = {}, action) {
     case 'API_END':
       if (
         action.payload === 'FETCHING_STATUS' ||
+        action.payload === 'FETCHING_STATUS_LIST' ||
+        action.payload === 'FETCHING_TEMPERATURE' ||
         action.payload === 'FETCHING_MODE'
       ) {
         return {

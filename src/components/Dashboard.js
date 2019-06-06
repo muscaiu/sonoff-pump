@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
 
   render() {
     const {
-      fbStatusList,
+      statusList,
       fbTempList,
       showModal,
       dialogType,
@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
             </Row>
             <Row>
               <Col xs="12">
-                <StatusChart fbStatusList={fbStatusList} />
+                <StatusChart statusList={statusList} />
               </Col>
             </Row>
             <Row>

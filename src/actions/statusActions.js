@@ -2,19 +2,31 @@ import { apiDefaultAction } from 'middleware/apiDefaultAction';
 
 export function fetchInitialStatus() {
   return apiDefaultAction({
-    url: "http://localhost:3001/api/status",
+    url: "/status",
+    label: 'FETCHING_STATUS',
     onSuccess: data => ({
       type: 'STATUS_SET',
       payload: data
     }),
     onFailure: () => { console.log("Error occured loading status") },
-    label: 'FETCHING_STATUS',
+  });
+}
+
+export function fetchStatusList() {
+  return apiDefaultAction({
+    url: "/status/list",
+    label: 'FETCHING_STATUS_LIST',
+    onSuccess: data => ({
+      type: 'STATUS_LIST_SET',
+      payload: data
+    }),
+    onFailure: () => { console.log("Error occured loading status list") },
   });
 }
 
 export function toggleStatus(option, showNotification) {
   return apiDefaultAction({
-    url: "http://localhost:3001/api/status/create",
+    url: "/status/create",
     method: 'POST',
     data: {
       value: !option
@@ -30,6 +42,6 @@ export function toggleStatus(option, showNotification) {
         payload: data
       }
     },
-    onFailure: () => { console.log("Error occured loading status") },
+    onFailure: () => { console.log("Error occured toggling status") },
   });
 }

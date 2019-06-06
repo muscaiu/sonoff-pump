@@ -6,6 +6,12 @@ function statusReducer(state = {}, action) {
         status: action.payload.value,
         lastAction: action.payload.createdAt
       }
+    case 'STATUS_LIST_SET':
+      console.log(action.payload)
+      return {
+        ...state,
+        statusList: action.payload
+      }
     case 'STATUS_TOGGLE':
       return {
         ...state,

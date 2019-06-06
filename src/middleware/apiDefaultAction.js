@@ -11,7 +11,7 @@ export function apiDefaultAction({
   return {
     type: 'API',
     payload: {
-      url,
+      url: `http://localhost:3001/api${url}`,
       method,
       data,
       accessToken,

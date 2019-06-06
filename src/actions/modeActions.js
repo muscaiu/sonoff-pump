@@ -2,7 +2,7 @@ import { apiDefaultAction } from 'middleware/apiDefaultAction';
 
 export function fetchInitialMode() {
   return apiDefaultAction({
-    url: "http://localhost:3001/api/mode",
+    url: "/mode",
     onSuccess: data => ({
       type: 'MODE_SET',
       payload: data
@@ -14,7 +14,7 @@ export function fetchInitialMode() {
 
 export function toggleMode(option, showNotification) {
   return apiDefaultAction({
-    url: "http://localhost:3001/api/mode/create",
+    url: "/mode/create",
     method: 'POST',
     data: {
       value: option === 'manual' ? 'auto' : 'manual'

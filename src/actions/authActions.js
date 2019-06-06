@@ -4,7 +4,7 @@ import { toggleMode } from 'actions/modeActions';
 
 export function login(credentials, option, showNotification) {
   return apiDefaultAction({
-    url: "http://localhost:3001/api/users/auth",
+    url: "/users/auth",
     method: 'POST',
     data: credentials,
     onSuccess: data => {

@@ -7,7 +7,7 @@ export default class Log extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/log')
+    fetch('/log')
       .then(response => response.json())
       .then(data => this.setState({ logFile: data }));
   }
