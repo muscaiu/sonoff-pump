@@ -3,11 +3,11 @@ function statusReducer(state = {}, action) {
     case 'STATUS_SET':
       return {
         ...state,
-        status: action.payload.value,
-        lastAction: action.payload.createdAt
+        status: action.payload.status.value,
+        lastAction: action.payload.status.createdAt,
+        temperature: action.payload.temperature,
       }
     case 'STATUS_LIST_SET':
-      console.log(action.payload)
       return {
         ...state,
         statusList: action.payload

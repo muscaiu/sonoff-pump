@@ -38,43 +38,47 @@ class Dashboard extends React.Component {
       mode,
       status,
       lastAction,
+      temperature,
     } = this.props;
     return (
-        <Fragment>
-          <div className="content">
-            <Row>
-              <Col xs="12">
-                <Header
-                  status={status}
-                  mode={mode}
-                  lastAction={lastAction}
-                  showNotification={this.showNotification}
-                  onToggleModal={onToggleModal}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="12">
-                <StatusChart statusList={statusList} />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="12">
-                <TempChart fbTempList={fbTempList} />
-              </Col>
-            </Row>
-            <Version>version: {pack.version}</Version>
-          </div>
-          <NotificationAlert ref="notificationAlert" />
-          <Modal
-            type={dialogType}
-            show={showModal}
-            onClose={() => onToggleModal(false)}
-            showNotification={this.showNotification}
-            isActive={status}
-            mode={mode}
-          />
-        </Fragment>
+      <Fragment>
+        <div className="content">
+          <Row>
+            <Col xs="12">
+              <Header
+                status={status}
+                mode={mode}
+                lastAction={lastAction}
+                showNotification={this.showNotification}
+                onToggleModal={onToggleModal}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12">
+              <StatusChart statusList={statusList} />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12">
+              <TempChart
+                temperature={temperature}
+                fbTempList={fbTempList}
+              />
+            </Col>
+          </Row>
+          <Version>version: {pack.version}</Version>
+        </div>
+        <NotificationAlert ref="notificationAlert" />
+        <Modal
+          type={dialogType}
+          show={showModal}
+          onClose={() => onToggleModal(false)}
+          showNotification={this.showNotification}
+          isActive={status}
+          mode={mode}
+        />
+      </Fragment>
     )
   }
 }
