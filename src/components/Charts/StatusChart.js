@@ -44,23 +44,23 @@ class StatusChart extends Component {
     getDailyTotal = (day) => {
         const { statusList } = this.props;
         const trueValues = [];
-        let prev;
         const selectedDay = moment().subtract(day, 'day')
+        let stopped;
 
         statusList && statusList.forEach((status, index) => {
             if (status.createdAt && moment(status.createdAt).isSame(selectedDay, 'day')) {
                 if (status.value === false) {
-                    prev = moment(status.createdAt, "YYYYMMDD HH:mm:ss")
+                    const started = moment(status.createdAt, "YYYYMMDD HH:mm:ss")
+                    trueValues.push(started && started.diff(moment(stopped), "seconds"))
                 } else {
-                    if (index === 0) {
+                    if (index === statusList.length - 1) {
                         trueValues.push(moment().diff(moment(status.createdAt), "seconds"))
                     } else {
-                        trueValues.push(prev && prev.diff(moment(status.createdAt), "seconds"))
+                        stopped = moment(status.createdAt, "YYYYMMDD HH:mm:ss")
                     }
                 }
             }
         });
-
         const total = trueValues.length > 0 && trueValues.reduce((acc, curr) => acc + curr)
         return total ? Math.floor(total / 60) : 0
     }
@@ -72,9 +72,9 @@ class StatusChart extends Component {
         const dayLabels = daysArray.map(day => this.getDay(day))
         const monthLabels = monthArray.reverse().map(day => this.getDayOfMonth(day))
         const lastWeek = daysArray.map(day => this.getDailyTotal(day))
-        const lastMonth = monthArray.map(day => this.getDailyTotal(day))
+        // const lastMonth = monthArray.map(day => this.getDailyTotal(day))
         const totalLastWeek = (lastWeek.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
-        const totalLastMonth = (lastMonth.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
+        // const totalLastMonth = (lastMonth.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
 
         return (
             <Card className="card-chart">
@@ -84,7 +84,7 @@ class StatusChart extends Component {
                             <h5 className="card-category">{`Total Hours last ${chartOption}`}</h5>
                             <CardTitle tag="h3">
                                 <i className="tim-icons icon-chart-pie-36 text-info" />{" "}
-                                {chartOption === 'month' ? totalLastMonth : totalLastWeek}
+                                {chartOption === 'month' ? 0 : totalLastWeek}
                             </CardTitle>
                         </Col>
                         <Col sm="6">
@@ -153,7 +153,7 @@ class StatusChart extends Component {
                                                 pointHoverRadius: 4,
                                                 pointHoverBorderWidth: 15,
                                                 pointRadius: 4,
-                                                data: chartOption === 'month' ? lastMonth : lastWeek
+                                                data: chartOption === 'month' ? 0 : lastWeek
                                             }
                                         ]
                                     };
