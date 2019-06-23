@@ -3,10 +3,12 @@ import { apiDefaultAction } from 'middleware/apiDefaultAction';
 export function fetchInitialMode() {
   return apiDefaultAction({
     url: "/mode",
-    onSuccess: data => ({
-      type: 'MODE_SET',
-      payload: data
-    }),
+    onSuccess: data => {
+      return ({
+        type: 'MODE_GET',
+        payload: data
+      })
+    },
     onFailure: () => { console.log("Error occured loading mode") },
     label: 'FETCHING_MODE'
   });
@@ -20,6 +22,7 @@ export function toggleMode(option, showNotification) {
       value: option === 'manual' ? 'auto' : 'manual'
     },
     onSuccess: data => {
+      console.log('data:', data)
       showNotification(
         'bc',
         'success',

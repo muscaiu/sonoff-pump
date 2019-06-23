@@ -1,6 +1,6 @@
 function modeReducer(state = {}, action) {
   switch (action.type) {
-    case 'MODE_SET':
+    case 'MODE_GET':
       return {
         ...state,
         mode: action.payload.value

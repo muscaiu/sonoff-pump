@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
   render() {
     const {
       statusList,
-      fbTempList,
+      // fbTempList,
       showModal,
       dialogType,
       onToggleModal,
@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
             <Col xs="12">
               <TempChart
                 temperature={temperature}
-                fbTempList={fbTempList}
+                // fbTempList={fbTempList}
               />
             </Col>
           </Row>

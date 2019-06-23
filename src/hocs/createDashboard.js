@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as modeActions from 'actions/modeActions';
 import * as statusActions from 'actions/statusActions';
-// import Spinner from 'components/Header/Spinner';
+import Spinner from 'components/Header/Spinner';
 
 export default function createDashboard(WrappedComponent) {
     class Dashboard extends React.Component {
@@ -11,13 +11,15 @@ export default function createDashboard(WrappedComponent) {
             this.props.fetchInitialMode();
             this.props.fetchInitialStatus();
             this.props.fetchStatusList();
+            //TODO: this next
+            // this.props.fetchTemperatureList();
         }
 
         render() {
-            return <WrappedComponent {...this.props} />
-            // return this.props.isLoadingData
-            //     ? <Spinner />
-            //     : <WrappedComponent {...this.props} />
+            // return <WrappedComponent {...this.props} />
+            return this.props.isLoadingData
+                ? <Spinner />
+                : <WrappedComponent {...this.props} />
         }
     }
 
