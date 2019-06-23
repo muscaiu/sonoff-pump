@@ -12,7 +12,7 @@ export function apiDefaultAction({
     type: 'API',
     payload: {
       // url: `http://cassusa.go.ro:3001/api${url}`,
-      url: `http://localhost:3001/api${url}`,
+      url: `http://192.168.1.10:3001/api${url}`,
       method,
       data,
       accessToken,
