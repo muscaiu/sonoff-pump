@@ -46,7 +46,6 @@ class StatusChart extends Component {
         const trueValues = [];
         const selectedDay = moment().subtract(day, 'day')
         let stopped;
-
         statusList && statusList.forEach((status, index) => {
             if (status.createdAt && moment(status.createdAt).isSame(selectedDay, 'day')) {
                 if (status.value === false) {
@@ -75,7 +74,7 @@ class StatusChart extends Component {
         // const lastMonth = monthArray.map(day => this.getDailyTotal(day))
         const totalLastWeek = (lastWeek.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
         // const totalLastMonth = (lastMonth.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
-
+        
         return (
             <Card className="card-chart">
                 <CardHeader>
@@ -106,7 +105,7 @@ class StatusChart extends Component {
                                         Week
                                     </span>
                                 </Button>
-                                <Button
+                                {/* <Button
                                     color="info"
                                     id="1"
                                     size="sm"
@@ -119,7 +118,7 @@ class StatusChart extends Component {
                                     <span className="d-sm-block d-md-block d-lg-block d-xl-block">
                                         Month
                                     </span>
-                                </Button>
+                                </Button> */}
                             </ButtonGroup>
                         </Col>
                     </Row>

@@ -1,7 +1,6 @@
 function statusReducer(state = {}, action) {
   switch (action.type) {
     case 'STATUS_GET':
-      console.log(action.payload)
       return {
         ...state,
         status: action.payload.status.value,
