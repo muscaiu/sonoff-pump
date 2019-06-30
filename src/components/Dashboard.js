@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import createDashboard from 'hocs/createDashboard';
 import Header from 'components/Header/Header';
 import StatusChart from 'components/Charts/StatusChart';
-// import TempChart from 'components/Charts/TempChart';
+import TempChart from 'components/Charts/TempChart';
 import Modal from 'components/Modals/Modal';
 import withModal from 'hocs/withModal';
 import pack from '../../package.json';
@@ -31,14 +31,14 @@ class Dashboard extends React.Component {
   render() {
     const {
       statusList,
-      // fbTempList,
+      temperatureList,
       showModal,
       dialogType,
       onToggleModal,
       mode,
       status,
       lastAction,
-      // temperature,
+      temperature,
     } = this.props;
     return (
       <Fragment>
@@ -59,14 +59,14 @@ class Dashboard extends React.Component {
               <StatusChart statusList={statusList} />
             </Col>
           </Row>
-          {/* <Row>
+          <Row>
             <Col xs="12">
               <TempChart
                 temperature={temperature}
-                // fbTempList={fbTempList}
+                temperatureList={temperatureList}
               />
             </Col>
-          </Row> */}
+          </Row>
           <Version>version: {pack.version}</Version>
         </div>
         <NotificationAlert ref="notificationAlert" />

@@ -17,15 +17,15 @@ import { chart_temp_options } from "variables/charts";
 class TempChart extends Component {
 
   getTodayTemp = () => {
-    const { fbTempList } = this.props;
+    const { temperatureList } = this.props;
     const hoursArray = [...Array(26).keys()].reverse();
     const trueValues = [];
 
     hoursArray.forEach(hour => {
       const selectedHour = moment().subtract(hour, 'hour')
-      fbTempList && fbTempList.forEach(data => {
-        if (data.createdAt && moment(data.createdAt.toDate()).isSame(selectedHour, 'hour')) {
-          trueValues.push(data.temperature)
+      temperatureList && temperatureList.forEach(data => {
+        if (data.createdAt && moment(data.createdAt).isSame(selectedHour, 'hour')) {
+          trueValues.push(data.value)
         }
       })
     });
@@ -96,10 +96,10 @@ class TempChart extends Component {
 }
 
 TempChart.propTypes = {
-  fbTempList: PropTypes.array
+  temperatureList: PropTypes.array
 }
 TempChart.defaultProps = {
-  fbTempList: [],
+  temperatureList: [],
 }
 
 // export default withFetching('http://localhost:3001/api/statuspompa')(TempChart);

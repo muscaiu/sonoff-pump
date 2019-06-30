@@ -5,6 +5,7 @@ export default function (state = {}, action) {
       if (
         action.payload === 'FETCHING_STATUS' ||
         action.payload === 'FETCHING_STATUS_LIST' ||
+        action.payload === 'FETCHING_TEMPERATURE_LIST' ||
         action.payload === 'FETCHING_MODE'
       ) {
         return {
@@ -17,6 +18,7 @@ export default function (state = {}, action) {
       if (
         action.payload === 'FETCHING_STATUS' ||
         action.payload === 'FETCHING_STATUS_LIST' ||
+        action.payload === 'FETCHING_TEMPERATURE_LIST' ||
         action.payload === 'FETCHING_MODE'
       ) {
         return {
