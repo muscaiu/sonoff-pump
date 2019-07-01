@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as modeActions from 'actions/modeActions';
 import * as statusActions from 'actions/statusActions';
 import * as temperatureActions from 'actions/temperatureActions';
-// import Spinner from 'components/Header/Spinner';
+import Spinner from 'components/Header/Spinner';
 
 export default function createDashboard(WrappedComponent) {
     class Dashboard extends React.Component {
@@ -16,10 +16,10 @@ export default function createDashboard(WrappedComponent) {
         }
 
         render() {
-            return <WrappedComponent {...this.props} />
-            // return this.props.isLoadingData
-            //     ? <Spinner />
-            //     : <WrappedComponent {...this.props} />
+            // return <WrappedComponent {...this.props} />
+            return this.props.isLoadingData
+                ? <Spinner />
+                : <WrappedComponent {...this.props} />
         }
     }
 
