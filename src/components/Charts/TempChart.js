@@ -18,7 +18,7 @@ class TempChart extends Component {
 
   getTodayTemp = () => {
     const { temperatureList } = this.props;
-    const hoursArray = [...Array(26).keys()].reverse();
+    const hoursArray = [...Array(24).keys()].reverse();
     const trueValues = [];
 
     hoursArray.forEach(hour => {
@@ -32,7 +32,10 @@ class TempChart extends Component {
     return trueValues
   }
 
-  getHour = hours => moment().subtract(hours, 'hour').format('HH')
+  getHour = hours => {
+    console.log(moment().subtract(hours, 'hour').format('HH'))
+    return moment().subtract(hours, 'hour').format('HH')
+  }
 
   render() {
     const hoursArray = [...Array(24).keys()].reverse();
