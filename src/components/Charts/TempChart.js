@@ -33,7 +33,6 @@ class TempChart extends Component {
   }
 
   getHour = hours => {
-    console.log(moment().subtract(hours, 'hour').format('HH'))
     return moment().subtract(hours, 'hour').format('HH')
   }
 

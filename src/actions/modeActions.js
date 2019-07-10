@@ -3,6 +3,7 @@ import { apiDefaultAction } from 'middleware/apiDefaultAction';
 export function fetchInitialMode() {
   return apiDefaultAction({
     url: "/mode",
+    label: 'FETCHING_MODE',
     onSuccess: data => {
       return ({
         type: 'MODE_GET',
@@ -10,7 +11,6 @@ export function fetchInitialMode() {
       })
     },
     onFailure: () => { console.log("Error occured loading mode") },
-    label: 'FETCHING_MODE'
   });
 }
 

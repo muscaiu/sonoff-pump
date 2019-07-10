@@ -5,10 +5,12 @@ export const apiStart = label => {
   })
 }
 
-export const apiEnd = label => ({
-  type: 'API_END',
-  payload: label
-});
+export const apiEnd = label => {
+  return ({
+    type: 'API_END',
+    payload: label
+  })
+}
 
 export const accessDenied = url => ({
   type: 'ACCESS_DENIED',
