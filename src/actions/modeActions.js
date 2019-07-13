@@ -22,7 +22,6 @@ export function toggleMode(option, showNotification) {
       value: option === 'manual' ? 'auto' : 'manual'
     },
     onSuccess: data => {
-      console.log('data:', data)
       showNotification(
         'bc',
         'success',

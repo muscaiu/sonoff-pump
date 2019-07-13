@@ -3,5 +3,6 @@ import rootReducer from "../reducers/rootReducer";
 import apiMiddleware from "../middleware/api";
 
 const store = createStore(rootReducer, applyMiddleware(apiMiddleware));
-window.store = store;
+// const store = createStore(rootReducer, applyMiddleware(withExtraArgument(api)));
+// window.store = store;
 export default store;

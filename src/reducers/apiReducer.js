@@ -1,29 +1,10 @@
-// function allPassed(label) {
-//   return new Promise((resolve, reject) => {
-//     let total = false;
-//     if (label === 'FETCHING_MODE') {
-//       // total = true;
-//     }
-//     if (label === 'FETCHING_STATUS') {
-//       // total = true;
-//     }
-//     console.log('total:', total)
-//     if (total) {
-//       resolve(total)
-//     }else{
-//       console.log(total)
-//     }
-//   })
-// }
-
-export default async function (state = {}, action) {
+export default function apiReducer(state = {}, action) {
   switch (action.type) {
     case 'API_START':
-      if (
-        // action.payload === 'FETCHING_MODE' ||
-        action.payload === 'FETCHING_STATUS'
-        // action.payload === 'FETCHING_STATUS_LIST' ||
-        // action.payload === 'FETCHING_TEMPERATURE_LIST'
+      if (action.payload === 'FETCHING_MODE' ||
+        action.payload === 'FETCHING_STATUS' ||
+        action.payload === 'FETCHING_STATUS_LIST' ||
+        action.payload === 'FETCHING_TEMPERATURE_LIST'
       ) {
         return {
           ...state,
@@ -32,16 +13,22 @@ export default async function (state = {}, action) {
       }
       break;
     case 'API_END':
-      // const passed = await (allPassed(action.payload))
-      // if (passed)
       if (action.payload === 'FETCHING_MODE' ||
-        action.payload === 'FETCHING_STATUS' ||
-        action.payload === 'FETCHING_STATUS_LIST' ||
-        action.payload === 'FETCHING_TEMPERATURE_LIST'
+      action.payload === 'FETCHING_STATUS' ||
+      action.payload === 'FETCHING_STATUS_LIST' ||
+      action.payload === 'FETCHING_TEMPERATURE_LIST'
       ) {
+        let allFinished = state.fetched || [];
+        allFinished.push(action.payload)
+        if (state.fetched && state.fetched.length >= 4) {
+          return {
+            ...state,
+            isLoadingData: false
+          };
+        }
         return {
           ...state,
-          isLoadingData: false
+          fetched: allFinished
         };
       }
       break;
