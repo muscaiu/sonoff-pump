@@ -74,16 +74,17 @@ class StatusChart extends Component {
         // const lastMonth = monthArray.map(day => this.getDailyTotal(day))
         const totalLastWeek = (lastWeek.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
         // const totalLastMonth = (lastMonth.reduce((acc, curr) => acc + curr) / 60).toFixed(1)
-        
+
         return (
             <Card className="card-chart">
                 <CardHeader>
                     <Row>
                         <Col className="text-left" sm="6">
-                            <h5 className="card-category">{`Total Hours this ${chartOption}`}</h5>
                             <CardTitle tag="h3">
                                 <i className="tim-icons icon-chart-pie-36 text-info" />{" "}
-                                {chartOption === 'month' ? 0 : totalLastWeek}
+                                <span className="card-category">
+                                    {`Total Hours this ${chartOption} ${chartOption === 'month' ? 0 : totalLastWeek}`}
+                                </span>
                             </CardTitle>
                         </Col>
                         <Col sm="6">

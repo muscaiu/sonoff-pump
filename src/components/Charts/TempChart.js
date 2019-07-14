@@ -6,6 +6,7 @@ import moment from 'moment';
 import {
   Card,
   CardHeader,
+  CardTitle,
   CardBody,
   Row,
   Col,
@@ -46,7 +47,12 @@ class TempChart extends Component {
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Temperature ({temperature})</h5>
+            <CardTitle tag="h3">
+                <i className="tim-icons icon-light-3 text-info" />{" "}
+                <span className="card-category">
+                  Current Temperature {temperature} °C
+                </span>
+            </CardTitle>
             </Col>
           </Row>
         </CardHeader>

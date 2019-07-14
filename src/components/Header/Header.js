@@ -28,9 +28,11 @@ const Header = ({
         <CardHeader>
           <Row>
             <Col className="text-left" sm="6">
-              <h5 className="card-category">Auto interval 19:00 - 20:00</h5>
               <CardTitle tag="h3">
-                <i className="tim-icons icon-bell-55 text-info" /> {status ? 'ON' : 'OFF'}
+                <i className="tim-icons icon-bell-55 text-info" />{" "}
+                <span className="card-category">
+                  {`Auto interval: ${mode === 'auto' ? '19:00 - 20:00' : 'disabled'}`}
+                </span>
               </CardTitle>
             </Col>
             <Col sm="6">
