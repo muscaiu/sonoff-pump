@@ -22,7 +22,6 @@ export default function withModal(WrappedComponent) {
                 <WrappedComponent
                     {...this.props}
                     onToggleModal={this.handleToggleModal}
-                    onNotifyDisabled={this.handleNotifyDisabled}
                     showModal={showModal}
                     dialogType={dialogType}
                 />

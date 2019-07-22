@@ -31,7 +31,7 @@ const Header = ({
               <CardTitle tag="h3">
                 <i className="tim-icons icon-bell-55 text-info" />{" "}
                 <span className="card-category">
-                  {`Auto interval: ${mode === 'auto' ? '19:00 - 20:00' : 'disabled'}`}
+                  {`Auto ${mode === 'auto' ? '19:00 - 20:00' : 'disabled'}`}
                 </span>
               </CardTitle>
             </Col>

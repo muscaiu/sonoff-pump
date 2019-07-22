@@ -83,7 +83,7 @@ class StatusChart extends Component {
                             <CardTitle tag="h3">
                                 <i className="tim-icons icon-chart-pie-36 text-info" />{" "}
                                 <span className="card-category">
-                                    {`Total Hours this ${chartOption} ${chartOption === 'month' ? 0 : totalLastWeek}`}
+                                    {`Total Hours ${chartOption === 'month' ? 0 : totalLastWeek}`}
                                 </span>
                             </CardTitle>
                         </Col>
