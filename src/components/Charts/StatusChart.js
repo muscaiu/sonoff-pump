@@ -48,9 +48,9 @@ class StatusChart extends Component {
         let stopped;
         statusList && statusList.forEach((status, index) => {
             if (status.createdAt && moment(status.createdAt).isSame(selectedDay, 'day')) {
-                if (status.value === false) {
+                if (status.value === true) {
                     const started = moment(status.createdAt, "YYYYMMDD HH:mm:ss")
-                    trueValues.push(started && started.diff(moment(stopped), "seconds"))
+                    trueValues.push(started && stopped.diff(moment(started), "seconds"))
                 } else {
                     if (index === statusList.length - 1) {
                         trueValues.push(moment().diff(moment(status.createdAt), "seconds"))
