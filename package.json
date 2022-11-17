@@ -45,7 +45,7 @@
     "firebase-admin": "^6.3.0",
     "fs-extra": "3.0.1",
     "history": "4.7.2",
-    "html-webpack-plugin": "2.29.0",
+    "html-webpack-plugin": "5.5.0",
     "jest": "20.0.4",
     "jest-junit": "^6.0.1",
     "moment": "^2.22.2",
